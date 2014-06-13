@@ -1,11 +1,8 @@
 class Event < ActiveRecord::Base
+  has_many :likes, as: :likeable
   belongs_to :venue
   belongs_to :broadcast
-  belongs_to :likeable, polymorphic: true
 
-  has_many :fans, as: :likable
-  has_many :groups, as: :likable
-  has_many :likes
   #questionable code below
   has_many :teams, through: :like
   has_one :like, through: :broadcast

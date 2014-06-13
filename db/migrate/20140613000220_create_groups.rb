@@ -5,7 +5,6 @@ class CreateGroups < ActiveRecord::Migration
       t.integer :creator_id
       t.text :bio
       t.string :photo_url
-      t.references :likeable, polymorphic: true
 
       t.timestamps
     end

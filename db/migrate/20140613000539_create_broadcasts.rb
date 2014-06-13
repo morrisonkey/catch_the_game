@@ -6,7 +6,6 @@ class CreateBroadcasts < ActiveRecord::Migration
       t.datetime :datetime
       t.text :info
       t.string :blurb
-      t.references :likeable, polymorphic: true
 
       t.timestamps
     end
