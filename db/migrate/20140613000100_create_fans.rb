@@ -7,6 +7,7 @@ class CreateFans < ActiveRecord::Migration
       t.string :facebook_info
       t.text :bio
       t.string :photo_url
+      t.references :likeable, polymorphic: true
 
       t.timestamps
     end

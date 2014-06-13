@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :venue_id
       t.integer :broadcast_id
       t.string :blurb
+      t.references :likeable, polymorphic: true
 
       t.timestamps
     end

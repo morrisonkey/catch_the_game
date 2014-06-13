@@ -1,18 +1,12 @@
 class Fan < ActiveRecord::Base
 
-  has_many :broadcasts, through: :fan_broadcasts
-  has_many :fan_broadcasts
-  has_many :fan_broadcast_comments
-  has_many :events, through: :fan_events
-  has_many :fan_events
-  has_many :venues, through: :fan_venues
-  has_many :fan_venues
-  has_many :groups, through: :fan_groups
-  has_many :fan_groups
-  has_many :fan_group_comments
-  has_many :teams, through: :fan_teams
-  has_many :fan_teams
-  has_many :fan_team_comments
+  has_many :broadcasts, as: :likeable
+  has_many :events, as: :likeable
+  has_many :venues, as: :likeable
+  has_many :groups, as: :likeable
+  has_many :teams, as: :likeable
+  has_many :likes
+  has_many :comments
 
   before_validation :downcase_email, :upcase_name
 

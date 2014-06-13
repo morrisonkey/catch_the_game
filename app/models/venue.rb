@@ -2,12 +2,10 @@ class Venue < ActiveRecord::Base
 
   has_many :broadcasts, through: :events
   has_many :events
-  has_many :fans, through: :fan_venues
-  has_many :fan_venues
-  has_many :groups, through: :group_venues
-  has_many :group_venues
-  has_many :teams, through: :team_venues
-  has_many :team_venues
+  has_many :fans, as: :likeable
+  has_many :groups, as: :likeable
+  has_many :teams, as: :likeable
+  has_many :likes
 
   before_validation :downcase_email, :upcase_name
 

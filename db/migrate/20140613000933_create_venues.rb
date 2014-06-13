@@ -12,6 +12,7 @@ class CreateVenues < ActiveRecord::Migration
       t.string :state
       t.integer :zip
       t.string :phone_number
+      t.references :likeable, polymorphic: true
 
       t.timestamps
     end

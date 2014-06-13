@@ -8,6 +8,8 @@ class CreateTeams < ActiveRecord::Migration
       t.string :sport
       t.text :bio
       t.string :photo_url
+      t.string :sports_data_id
+      t.references :likeable, polymorphic: true
 
       t.timestamps
     end
