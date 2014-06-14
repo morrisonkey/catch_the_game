@@ -1,7 +1,8 @@
 class BroadcastsController < ApplicationController
+  
   def index
+    @schedule = Broadcast.api_call
 
-    
   end
 
   def show

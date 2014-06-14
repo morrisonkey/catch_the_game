@@ -1,12 +1,12 @@
 Venue.delete_all
 Fan.delete_all
 Group.delete_all
-Team.delete_all
+# Team.delete_all
 Broadcast.delete_all
 Event.delete_all
 
 
-##Sportsdatallc.com API CALLS FOR SPORTS INFO.
+#Sportsdatallc.com API CALLS FOR Team INFO.
 
     mlb = {}
 
@@ -32,8 +32,29 @@ Event.delete_all
       
     mlb = mlb[nil]
  
-
 #END of sportsDATA API call.
+
+#Scheduling API call
+game_schedule = {}
+
+binding.pry
+baseball = HTTParty.get("http://api.sportsdatallc.org/mlb-t4/schedule/2014.xml?api_key=tcxmhrf8u2vyk8s5ukxgjrz4")
+schedule = baseball["calendars"]["event"]
+
+schedule.each do |vs|
+    if game_schedule[vs[0]].nil?
+        game_schedule[vs[0]]=[]
+    end
+
+    game_schedule[vs[0]].push({
+        :scheduled_start => vs["scheduled_start"],
+        :visitor         => vs["visitor"],
+        :home            => vs["home"]
+        })
+end
+  
+game_schedule = game_schedule[nil]
+#END of call
 
 10.times do
 
@@ -89,11 +110,12 @@ Group.all.each do |group|
     end
 end
 
-20.times do
+game_schedule.each do |broadcast|
 
-  broadcast = Broadcast.create({
-    name: Team.all.sample.name + " vs " + Team.all.sample.name,
-    blurb: Faker::Lorem.sentence
+    Broadcast.create({
+        visitor: broadcast[:visitor],
+        home: broadcast[:home],
+        datetime: broadcast[:schedule_start]
     })
 
 end
