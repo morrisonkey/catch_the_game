@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614171147) do
+ActiveRecord::Schema.define(version: 20140614174838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,11 +60,11 @@ ActiveRecord::Schema.define(version: 20140614171147) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
-    t.integer  "creator_id"
     t.text     "bio"
     t.string   "photo_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fan_id"
   end
 
   create_table "likes", force: true do |t|
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 20140614171147) do
 
   add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
   add_index "likes", ["liker_id", "liker_type"], name: "index_likes_on_liker_id_and_liker_type", using: :btree
+
+  create_table "memberships", force: true do |t|
+    t.integer  "fan_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name"

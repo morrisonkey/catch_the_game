@@ -41,7 +41,8 @@ end
   group = Group.create({
     name: Team.all.sample.name + " Fans " + Faker::Company.suffix,
     creator_id: Fan.all.sample.id,
-    bio: Faker::Lorem.paragraph
+    bio: Faker::Lorem.paragraph,
+    fan_id: 
     })
 
 end
