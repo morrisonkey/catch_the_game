@@ -19,8 +19,7 @@ end
 25.times do
 
   fan = Fan.create({
-    username: Faker::Internet.user_name,
-    email: Faker::Internet.free_email
+    bio: Faker::Lorem.paragraph,
     })
 
 end
@@ -40,9 +39,8 @@ end
 
   group = Group.create({
     name: Team.all.sample.name + " Fans " + Faker::Company.suffix,
-    creator_id: Fan.all.sample.id,
     bio: Faker::Lorem.paragraph,
-    fan_id: 
+    fan_id: Fan.all.sample.id
     })
 
 end
