@@ -1,7 +1,7 @@
 Venue.delete_all
 Fan.delete_all
 Group.delete_all
-# Team.delete_all
+Team.delete_all
 Broadcast.delete_all
 Event.delete_all
 

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :groups
   resources :broadcasts
   resources :venues
+  resources :teams
+  resources :events
 
 
 end
