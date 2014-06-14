@@ -1,7 +1,7 @@
 class BroadcastsController < ApplicationController
   
   def index
-    @schedule = Broadcast.api_call
+    @schedule = Broadcast.all
 
   end
 

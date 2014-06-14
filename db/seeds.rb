@@ -115,7 +115,7 @@ game_schedule.each do |broadcast|
     Broadcast.create({
         visitor: broadcast[:visitor],
         home: broadcast[:home],
-        datetime: broadcast[:schedule_start]
+        datetime: broadcast[:scheduled_start]
     })
 
 end
