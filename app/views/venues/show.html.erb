@@ -1,2 +1,12 @@
 <h1><%= @venue.name %></h1>
-<p>Find me in app/views/venue/show.html.erb</p>
+<div>
+<sidebar>
+  <p><%=@venue.photo_url%></p>
+  <p><%=@venue.city%></p>
+  <p><%=@venue.state%></p>
+  <p><%=@venue.zip%></p>
+  <p><%=@venue.phone_number%></p>
+  <p><%=@venue.bio%></p>
+</sidebar>
+  <p><%=@venue.events%></p>
+</div>

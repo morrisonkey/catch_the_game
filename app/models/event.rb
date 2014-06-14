@@ -6,4 +6,10 @@ class Event < ActiveRecord::Base
   #questionable code below
   has_one :broadcast
   # not so sure about the syntax on the lines above... might not work
+
+  def broadcast
+    broadcast = Broadcast.where(id: self.broadcast_id)
+    return broadcast[0]
+  end
+
 end
