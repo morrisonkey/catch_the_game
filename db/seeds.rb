@@ -57,13 +57,16 @@ end
 game_schedule = game_schedule[nil]
 #END of call
 
+
 10.times do
 
+random_bar_photo = ["http://www.thealbanybowl.com/files/bar4.jpg", "http://1.bp.blogspot.com/_m5WRB8ziRT0/TBY_wUlfEGI/AAAAAAAAATs/xNbJ8Hh867A/s1600/IMG_4152.JPG", "http://rmrequipmentrental.com/sattleraudiovideo/images/Album/Sports%20Bars/slides/Sports%20Bar%20Lights%20Pic.jpg"]
   Venue.create({
     name: Faker::Name.first_name + "'s Bar",
     bio: Faker::Company.catch_phrase,
     city: Faker::Address.city,
-    phone_number: Faker::Number.number(10)
+    phone_number: Faker::Number.number(10),
+    photo_url: random_bar_photo.sample
     })
 
 end
@@ -76,15 +79,18 @@ end
 
 end
 
+
 mlb.each do |team|
 
+random_logos = ["http://content.sportslogos.net/logos/54/74/full/i8axc5r73mlh7xsg4g50i8e4p.gif", "http://walls-world.com/wp-content/uploads/2013/09/Logo-Chicago-White-Sox-Wallpaper.jpg", "http://www.sports-logos-screensavers.com/user/TampaBayDevilRays5.jpg", "http://content.sportslogos.net/logos/53/68/full/1262.gif"]
   Team.create({
     name: team[:name],
     market: team[:market],
     league: "MLB",
     conference: team[:league],
     sport: "Baseball",
-    sports_data_id: team[:sports_data_id]
+    sports_data_id: team[:sports_data_id],
+    photo_url: random_logos.sample
     })
 
 end
