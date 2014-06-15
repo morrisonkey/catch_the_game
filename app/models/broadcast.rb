@@ -23,8 +23,8 @@ class Broadcast < ActiveRecord::Base
   end
 
   def self.todays_broadcasts
-    games = self.where(datetime: (Time.now.utc - 2.hour)..(Time.now.midnight.utc + 25.hour))
-    return games.order(:datetime)
+    todays_games = self.where(datetime: (Time.now.utc - 2.hour)..(Time.now.midnight.utc + 25.hour))
+    return todays_games.order(:datetime)
   end
 
   #getter
