@@ -4,7 +4,9 @@
   <div>
     <sidebar>
       <h3><%=broadcast.time%></h3>
-      <br>
+      <div class ="likebutton">
+      <h5 data-text-swap="Unlike">Like</h5>
+    </div>
     </sidebar>
     <article>
       <%broadcast.events.each do |event|%>
