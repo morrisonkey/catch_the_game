@@ -2,7 +2,7 @@
 
 $( document ).ready(function() {
 
-$("h5").on("click", function() {
+$("button").on("click", function() {
   var el = $(this);
     // $( this ).effect( "slide", 90 );
       if (el.text() == el.data("text-swap")) {
