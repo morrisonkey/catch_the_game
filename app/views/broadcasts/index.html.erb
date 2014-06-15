@@ -4,12 +4,13 @@
   <div>
     <sidebar>
       <h3><%=broadcast.time%></h3>
-      <br>
+      <div class ="likebutton">
+      <button data-text-swap="Unlike">Like</button>
+    </div>
     </sidebar>
     <article>
       <%broadcast.events.each do |event|%>
-        <p><%=event.venue.name%></p>
-        <p>Date: <%=event.broadcast.datetime%></p>
+        <p><%=event.venue.name%> | [address] </p>
         <p>Blurb: <%=event.blurb%></p>
         <p>Info: <%=event.info%></p>
         <br>
