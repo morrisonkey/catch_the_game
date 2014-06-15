@@ -1,12 +1,21 @@
 <h1><%= @venue.name %></h1>
 <div>
-<sidebar>
-  <p><%=@venue.photo_url%></p>
-  <p><%=@venue.city%></p>
-  <p><%=@venue.state%></p>
-  <p><%=@venue.zip%></p>
-  <p><%=@venue.phone_number%></p>
-  <p><%=@venue.bio%></p>
-</sidebar>
-  <p><%=@venue.events%></p>
+  <sidebar>
+    <p><%=@venue.photo_url%></p>
+    <p><%=@venue.city%></p>
+    <p><%=@venue.state%></p>
+    <p><%=@venue.zip%></p>
+    <p><%=@venue.phone_number%></p>
+    <p><%=@venue.bio%></p>
+    <br>
+  </sidebar>
+  <article>
+    <%@venue.events.each do |event|%>
+    <p><%=event.name%></p>
+    <p><%=event.blurb%></p>
+    <p><%=event.info%></p>
+    <p><%=event.broadcast.datetime%></p>
+    <br>
+    <% end %>
+  </article>
 </div>
