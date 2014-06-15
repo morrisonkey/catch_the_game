@@ -123,7 +123,7 @@ end
 10.times do
 
   event = Event.create({
-    name: Broadcast.all.sample.name,
+    name: Broadcast.all.sample.visitor_team.name + " vs. " + Broadcast.all.sample.home_team.name,
     blurb: Faker::Lorem.sentence,
     info: Faker::Lorem.paragraph,
     venue_id: Venue.all.sample.id,
