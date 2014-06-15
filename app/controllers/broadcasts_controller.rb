@@ -6,6 +6,7 @@ class BroadcastsController < ApplicationController
   end
 
   def show
+    @broadcast = Broadcast.find_by_id(params[:id])
   end
 
   def new

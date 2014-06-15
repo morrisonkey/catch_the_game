@@ -1,2 +1,18 @@
-<h1>Broadcast#show</h1>
-<p>Find me in app/views/broadcast/show.html.erb</p>
+<h1><%= @broadcast.visitor_team.name + " vs. " + @broadcast.home_team.name %></h1>
+<div>
+  <sidebar>
+    <p>Date: <%=@broadcast.datetime%></p>
+    <p>Visitor: <%=@broadcast.visitor_team.name%></p>
+    <p>Home: <%=@broadcast.home_team.name%></p>
+    <br>
+  </sidebar>
+  <article>
+    <%@broadcast.events.each do |event|%>
+    <p><%=event.name%></p>
+    <p><%=event.blurb%></p>
+    <p><%=event.info%></p>
+    <p><%=event.broadcast.datetime%></p>
+    <br>
+    <% end %>
+  </article>
+</div>
