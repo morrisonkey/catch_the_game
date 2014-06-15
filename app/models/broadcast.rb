@@ -1,4 +1,6 @@
 class Broadcast < ActiveRecord::Base
+  include ApplicationHelper
+
   has_many :likes, as: :likeable
   has_many :venues, through: :events
   has_many :events
@@ -17,25 +19,23 @@ class Broadcast < ActiveRecord::Base
   end
 
   def title
-    return "#{self.visitor_team.name} vs. #{self.home_team.name}"
+    return "#{self.visitor_team.name} @ #{self.home_team.name}"
   end
 
   def self.todays_broadcasts
-    #Time.now.midnight - 1.day
     games = self.where(datetime: (Time.now.utc - 2.hour)..(Time.now.midnight.utc + 25.hour))
-    sorted_games = games.order(:datetime)
-
+    return games.order(:datetime)
   end
 
   #getter
   def date_and_year
-    self.datetime.strftime("%B %-d, %Y")
+    from_UTC_to_EST(self.datetime).strftime("%B %-d, %Y")
+  end
+
+  def time
+    from_UTC_to_EST(self.datetime).strftime("%-I:%M %p")
   end
   
-  def schedule(day)
-
-  end
-
   
   #temporary method
   def self.pretty_print

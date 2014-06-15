@@ -3,15 +3,12 @@
   <h1><%= broadcast.title %></h1>
   <div>
     <sidebar>
-      <p>Date: <%=broadcast.datetime%></p>
-      <p>Visitor: <%=broadcast.visitor_team.name%></p>
-      <p>Home: <%=broadcast.home_team.name%></p>
+      <h3><%=broadcast.time%></h3>
       <br>
     </sidebar>
     <article>
       <%broadcast.events.each do |event|%>
-        <p>Title: <%=event.name%></p>
-        <p>Location: <%=event.venue.name%></p>
+        <p><%=event.venue.name%></p>
         <p>Date: <%=event.broadcast.datetime%></p>
         <p>Blurb: <%=event.blurb%></p>
         <p>Info: <%=event.info%></p>

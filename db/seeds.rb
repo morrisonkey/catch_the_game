@@ -37,6 +37,7 @@ Event.delete_all
 #Scheduling API call
 game_schedule = {}
 
+#this binding.pry is intended to split up the API calls
 binding.pry
 baseball = HTTParty.get("http://api.sportsdatallc.org/mlb-t4/schedule/2014.xml?api_key=tcxmhrf8u2vyk8s5ukxgjrz4")
 schedule = baseball["calendars"]["event"]
