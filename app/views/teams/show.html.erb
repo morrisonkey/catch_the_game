@@ -1,15 +1,13 @@
-<h1><%@team.market + " " + @team.name%></h1>
+<h1><%=@team.market + " " + @team.name%></h1>
 <div>
   <sidebar>
-    <p>Name: <% @team.name%></p>
+    <img src="<%=@team.photo_url%>" width="250" height="250"/>
+    <p>Name: <%= @team.name%></p>
     <p>City: <%=@team.market%></p>
     <p>League: <%=@team.league%></p>
     <br>
   </sidebar>
   <article>
     <h3>Broadcasts:</h3>
-    <% @group.fans.each do |fan| %>
-    <p><%=fan.id%></p>
-    <% end %>
   </article>
 </div>

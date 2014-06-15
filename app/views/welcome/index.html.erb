@@ -1,2 +1,27 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h2>New Event</h2>
+
+
+<h4>Event Registration List</h4>
+<div class='event-manager'>
+  <ul class='events'>
+  </ul>
+
+  <form class='event-form'>
+    <input type="text" name='name' placeholder="name">
+    <input type="text" name='blurb' placeholder="blurb">
+    <input type="text" name='info' placeholder="info">
+    <input type="submit">
+  </form>
+</div>
+
+
+<script id="eventTemplate" type="text/template">
+  <ul id=<%%= id %> class="event">
+  <form class="edit-form">
+    <li><h1><%%= name %></h1></li>
+    <li>blurb: <%%= blurb %></li>
+    <li>info: <%%= info %></li>
+    <input type="hidden" name="id" value=<%%= id %>>
+    <button class="edit">Edit</button>
+  </form>
+</script>
