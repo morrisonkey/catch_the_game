@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :venues
   resources :teams
   resources :events
-
+  resources :likes
 
 end
