@@ -5,6 +5,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by_id(params[:id])
+    @todays_broadcasts = Broadcast.todays_broadcasts
+    @todays_date = @todays_broadcasts[0].date_and_year
   end
 
   def new

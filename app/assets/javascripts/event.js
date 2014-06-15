@@ -44,9 +44,8 @@ EventCollection.prototype.create = function(paramObject){
 }
 
 EventCollection.prototype.update = function(paramObject){
-  console.log(paramObject);
   $.ajax({
-    url: '/event/' + paramObject["id"],
+    url: '/events/' + paramObject["id"],
     method: 'PATCH',
     dataType: 'json',
     data: {event: paramObject}
