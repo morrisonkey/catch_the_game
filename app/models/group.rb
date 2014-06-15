@@ -9,12 +9,12 @@ class Group < ActiveRecord::Base
 	has_many :comments, as: :commentable
 
   #I was able to slim to below down by adding the belongs_to :fan relationship up top
-  def creator
+  def leader
     self.fan
   end
 
   #A settor using creator to complete the above getter.  Now, we can just use the word creator whereever we would have otherwise used the word fan in relation to a Group.
-  def creator=(creator_id)
-  	self.fan_id = creator_id
+  def leader=(leader_id)
+  	self.fan_id = leader_id
   end
 end
