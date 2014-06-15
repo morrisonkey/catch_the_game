@@ -1,2 +1,24 @@
-<h1>Event#index</h1>
-<p>Find me in app/views/event/index.html.erb</p>
+<h1>Events: </h1>
+<% @events.each do |event| %>
+<% venue = event.venue %>
+<h2><%= event.name %></h2>
+<div>
+  <sidebar>
+    <p>Venue: <%=venue.name%></p>
+    <p>Photo: <%=venue.photo_url%></p>
+    <p>City: <%=venue.city%></p>
+    <p>State: <%=venue.state%></p>
+    <p>Zip: <%=venue.zip%></p>
+    <p>Phone: <%=venue.phone_number%></p>
+    <p>Bio: <%=venue.bio%></p>
+    <br>
+  </sidebar>
+  <article>
+    <p><%=event.name%></p>
+    <p><%=event.blurb%></p>
+    <p><%=event.info%></p>
+    <p><%=event.broadcast.datetime%></p>
+    <br>
+  </article>
+</div>
+<% end %>

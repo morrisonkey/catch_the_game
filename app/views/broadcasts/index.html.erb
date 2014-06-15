@@ -1,9 +1,22 @@
-<h1>Broadcast#index</h1>
-<p>Find me in app/views/broadcast/index.html.erb</p>
-
-
-
-
-<div id="broadcast_test">
-	<p> hello </p>
+<h1>Broadcasts:</h1>
+<% @broadcasts.each do |broadcast| %>
+<h1><%= broadcast.visitor_team.name + " vs. " + broadcast.home_team.name %></h1>
+<div>
+  <sidebar>
+    <p>Date: <%=broadcast.datetime%></p>
+    <p>Visitor: <%=broadcast.visitor_team.name%></p>
+    <p>Home: <%=broadcast.home_team.name%></p>
+    <br>
+  </sidebar>
+  <article>
+    <%broadcast.events.each do |event|%>
+    <p>Title: <%=event.name%></p>
+    <p>Location: <%=event.venue.name%></p>
+    <p>Date: <%=event.broadcast.datetime%></p>
+    <p>Blurb: <%=event.blurb%></p>
+    <p>Info: <%=event.info%></p>
+    <br>
+    <% end %>
+  </article>
 </div>
+<% end %>

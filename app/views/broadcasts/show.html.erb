@@ -8,10 +8,11 @@
   </sidebar>
   <article>
     <%@broadcast.events.each do |event|%>
-    <p><%=event.name%></p>
-    <p><%=event.blurb%></p>
-    <p><%=event.info%></p>
-    <p><%=event.broadcast.datetime%></p>
+    <p>Title: <%=event.name%></p>
+    <p>Location: <%=event.venue.name%></p>
+    <p>Date: <%=event.broadcast.datetime%></p>
+    <p>Blurb: <%=event.blurb%></p>
+    <p>Info: <%=event.info%></p>
     <br>
     <% end %>
   </article>

@@ -1,2 +1,15 @@
-<h1>Team#show</h1>
-<p>Find me in app/views/team/show.html.erb</p>
+<h1><%@team.market + " " + @team.name%></h1>
+<div>
+  <sidebar>
+    <p>Name: <% @team.name%></p>
+    <p>City: <%=@team.market%></p>
+    <p>League: <%=@team.league%></p>
+    <br>
+  </sidebar>
+  <article>
+    <h3>Broadcasts:</h3>
+    <% @group.fans.each do |fan| %>
+    <p><%=fan.id%></p>
+    <% end %>
+  </article>
+</div>
