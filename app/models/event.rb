@@ -3,13 +3,10 @@ class Event < ActiveRecord::Base
   belongs_to :venue
   belongs_to :broadcast
 
-  #questionable code below
-  has_one :broadcast
-  # not so sure about the syntax on the lines above... might not work
 
-  def broadcast
-    broadcast = Broadcast.where(id: self.broadcast_id)
-    return broadcast[0]
-  end
+  #deleted this because it says the same thing as belongs_to :broadcast
+
+  #deleted this because activerecord handles that for us
 
 end
+  
