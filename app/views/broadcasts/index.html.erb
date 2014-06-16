@@ -1,20 +1,35 @@
-<h1><%= @todays_date %></h1>
-<% @todays_broadcasts.each do |broadcast| %>
-  <h1><%= broadcast.title %></h1>
-  <div>
-    <sidebar>
-      <h3><%=broadcast.time%></h3>
-    <div class = "likebutton" value = "broadcast">
-      <button data-text-swap="Unlike">Like</button>
-    </div>
-    </sidebar>
-    <article>
-      <%broadcast.events.each do |event|%>
-        <p><%=event.venue.name%> | [address] </p>
-        <p>Blurb: <%=event.blurb%></p>
-        <p>Info: <%=event.info%></p>
+<body>
+
+
+    <div class = "center">
+
+      <div id = "navigation">
+      <h1><%= @todays_date %></h1>
+      <div>
+
+      <div class = "gameinfo">
+      
+          <% @todays_broadcasts.each do |broadcast| %>
+          
+          <h2><%= broadcast.title %></h2>
+
+          <h3><%=broadcast.time%></h3>
+
+          <button class = "likebutton" value = "broadcast" data-text-swap="Unlike">Like</button>
+
+          <div class = "line"></div>
+
+   
+          <%broadcast.events.each do |event|%>
+            <p><%=event.venue.name%> | [address] </p>
+            <p>Blurb: <%=event.blurb%></p>
+            <p>Info: <%=event.info%></p>
         <br>
       <% end %>
-    </article>
+      
+  <% end %>
+    </div>
+
   </div>
-<% end %>
+
+</body>
