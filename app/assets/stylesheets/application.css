@@ -1,15 +1,139 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+.navigation{
+position:fixed;
+background-color: #2f2f2f;
+height: 50px;
+width: 20000px;
+top: 0px;
+}
+
+.navbar-link{
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  padding: 18px 0px 0px 0px;
+  text-transform: uppercase;
+}
+
+.navbar-text{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: white;
+  padding: 18px 0px 0px 35px;
+}
+
+
+a{
+text-decoration: none;
+}
+
+body{
+background-color:#272b2e;
+padding: 0;
+margin: 0;
+}
+
+
+h1{
+font-family: 'Squada One', cursive;
+font-size: 65px;
+letter-spacing: 2px;
+color: #fdfdfd;
+font-weight: 400;
+margin: 100px 0px 0px 0px;
+}
+
+h2{
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 45px;
+text-transform: uppercase;
+margin: 10px 0px 0px 0px;
+color: #fdfdfd;
+letter-spacing: 2px;
+}
+
+h3{
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 25px;
+text-transform: uppercase;
+margin: 5px 0px 0px 0px;
+color: #fdfdfd;
+letter-spacing: 2px;
+}
+
+.gameinfo{
+margin: 30px 0px 0px 0px;
+}
+
+
+button{
+height: 25px;
+width: 65px;
+font-family: font-family: 'Squada One', cursive;
+color: white;
+background-color: #272b2e;
+border: 1px solid white;
+text-transform: uppercase;
+letter-spacing: 1px;
+outline: none;
+margin: 15px 20px 10px 0px;
+}
+
+.center{
+  padding: 0;
+  margin: 0;
+  width: 900px;
+  margin: 0 auto;
+}
+
+.line{
+  height:2px;
+  width: 900px;
+  background-color: white;
+  margin: 10px 0px 0px 0px;
+}
