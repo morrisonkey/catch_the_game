@@ -8,19 +8,42 @@ function Like(likeJSON){
 	this.liker_type = likeJSON.liker_type;
 }
 
-// // ************ Collection *************
-// function likeCollection(){
-// 	this.models = {};
+// ************ Collection *************
+function likeCollection(){
+	this.models = {};
+	this.lastModelId;
+}
 
-// 	this.add = function(likeJSON){
-// 		var newLike = new Like(likeJSON);
-// 		this.models[likeJSON.id] = newLike;
-// 		// displayEntireCollection();
-// 	};
+likeCollection.prototype.add = function(likeJSON){
+		var newLike = new Like(likeJSON);
+		this.models[likeJSON.id] = newLike;
+		// displayEntireCollection();
+	};
 
-// 	this.create = function()
-// }
+likeCollection.prototype.create = function(paramObject){
+		var self = this;
+		$.ajax({
+			url: '/likes',
+			method: 'post',
+			dataType: 'json',
+			data: paramObject
+		}).done(function(data){	
+			self.add(data);	
+			self.lastModelId = data.id;
+		})
+	};
 
+likeCollection.prototype.destroy = function(like_id){
+		var self = this;
+		$.ajax({
+			url: '/likes/' + like_id,
+			method: 'delete',
+			dataType: 'json'
+		}).done(function(like_id){
+			debugger
+			delete likeCollection.models[like_id]
+		})
+	};
 // CustomerCollection.prototype.create = function(paramObject){
 // 	var self = this
 // 	$.ajax({
@@ -32,41 +55,38 @@ function Like(likeJSON){
 // 		self.add(data); 
 // 	})
 // }
+var likeCollection = new likeCollection();
+
 $( document ).ready(function() {
 
 	$("button").on("click", function() {
 	  var el = $(this);
-	  var likeable_type = el.val();
-	  console.log(likeable_type);
-	  var likeable_id = el.attr("id");
-	  console.log(likeable_id);	
+	  // var likeable_type = el.val();
+	  // var likeable_id = el.attr("id");
+	  var likeable_data = {
+				likeable_type: el.val(),
+				likeable_id: el.attr("id")
+			};
 
-	    // $( this ).effect( "slide", 90 );
       if (el.text() == el.data("text-swap")) {
+      	
         //"unlike" button
-        // console.log(el.text()); //=> "Unlike"
         el.text(el.data("text-original"));
+        
+        like_id = el.data("like_id");
+        debugger
+        likeCollection.destroy(like_id);
+
       } else {
         //"like" button
-   		// console.log(el.text()); //=> "Like"       
         el.data("text-original", el.text());
         el.text(el.data("text-swap"));
-	    $.ajax({
-			url: '/likes',
-			dataType: 'json',
-			method: 'post',
-			data: {
-				likeable_type: likeable_type,
-				likeable_id: likeable_id
-			}
-		}).done(function(data){
-			console.log(data);
-			
-			
+     
+     
+	   	// create a Like, story it in DB, and return the corresponding like_id which I set equal to like_id
+	   	likeCollection.create(likeable_data).done(function() {
+	   		el.data("like_id", likeCollection.lastModelId);
 		});
     }
-
-	});
-
 
 });
