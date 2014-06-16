@@ -35,10 +35,12 @@
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
-<div class="ui-widget">
-  <label for="tags">Search: </label>
-  <<input id="tags" title="Search for your favorite team by name or by city.">>
-</div>
+
+<form class="ui-widget">
+  <input type="text" name="team_name" placeholder ="search" id="tags" title="Search for your favorite team by name or by city.">
+</form>
+
+
 </div>
 <!-- end of devise function edits -->
   <%= yield %>
