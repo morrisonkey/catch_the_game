@@ -1,36 +1,87 @@
-<h1><%= @group.name %></h1>
-<div>
-  <sidebar>
-    <p>Creator: <%=@group.creator.id%></p>
-    <p>Bio: <%=@group.bio%></p>
-    <p>Members(<%=@group.fans.length%>): </p>
-    <h3>Members:</h3>
-    <% @group.fans.each do |fan| %>
-    <p><%=fan.id%></p>
-    <% end %>
-    <br>
-  </sidebar>
-  <article>
-    <h1><%= @todays_date %></h1>
-<% @todays_broadcasts.each do |b| %>
-<% if 
-  <h1><%= broadcast.title %></h1>
+<head>
+  <script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+</head>
+<body>
+
+  <h1><%= @group.name %></h1>
   <div>
     <sidebar>
-      <h3><%=broadcast.time%></h3>
-      <div class ="likebutton">
-      <button data-text-swap="Unlike">Like</button>
-    </div>
-    </sidebar>
-    <article>
-      <%broadcast.events.each do |event|%>
-        <p><%=event.venue.name%> | [address] </p>
-        <p>Blurb: <%=event.blurb%></p>
-        <p>Info: <%=event.info%></p>
-        <br>
+      <p>Creator: <%=@group.leader.id%></p>
+      <p>Bio: <%=@group.bio%></p>
+      <p>Members(<%=@group.users.length%>): </p>
+      <h3>Members:</h3>
+      <% @group.users.each do |fan| %>
+      <p><%=fan.id%></p>
       <% end %>
-    </article>
+      <br>
+    </sidebar>
   </div>
-<% end %>
-  </article>
 </div>
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Events</a></li>
+    <li><a href="#tabs-2">Broadcasts</a></li>
+    <li><a href="#tabs-3">Venues</a></li>
+  </ul>
+  <div id="tabs-1">
+    <article>
+      <h1><%= @todays_date %></h1>
+      <% @todays_broadcasts.each do |broadcast| %>
+        <h1><%= broadcast.title %></h1>
+        <div>
+          <sidebar>
+            <h3><%=broadcast.time%></h3>
+            <div class ="likebutton">
+              <button data-text-swap="Unlike">Like</button>
+            </div>
+          </sidebar>
+          <article>
+            <%broadcast.events.each do |event|%>
+            <p><%=event.venue.name%> | [address] </p>
+            <p>Blurb: <%=event.blurb%></p>
+            <p>Info: <%=event.info%></p>
+            <br>
+            <% end %>
+          </article>
+        </div>
+        <% end %>
+      </article>
+  </div>
+  <div id="tabs-2">
+    <article>
+      <h1><%= @todays_date %></h1>
+      <% @todays_broadcasts.each do |broadcast| %>
+        <h1><%= broadcast.title %></h1>
+        <div>
+          <sidebar>
+            <h3><%=broadcast.time%></h3>
+            <div class ="likebutton">
+              <button data-text-swap="Unlike">Like</button>
+            </div>
+          </sidebar>
+          <article>
+            <%broadcast.events.each do |event|%>
+            <p><%=event.venue.name%> | [address] </p>
+            <p>Blurb: <%=event.blurb%></p>
+            <p>Info: <%=event.info%></p>
+            <br>
+            <% end %>
+          </article>
+        </div>
+        <% end %>
+      </article>
+    </div>
+    <div id="tabs-3">
+      <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+      <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+    </div>
+  </div>
+
+
+</body>
+</html>
