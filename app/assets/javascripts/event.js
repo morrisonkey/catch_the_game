@@ -32,10 +32,10 @@ function EventCollection(){
 
 EventCollection.prototype.create = function(paramObject){
   $.ajax({
-    url: '/event',
+    url: '/events',
     method: 'POST',
     dataType: 'json',
-    data: {event: paramObject}
+    data: {events: paramObject}
   }).done(function(data){
     //INSERT CALLBACK CODE HERE
     console.log(data);
@@ -48,24 +48,25 @@ EventCollection.prototype.update = function(paramObject){
     url: '/events/' + paramObject["id"],
     method: 'PATCH',
     dataType: 'json',
-    data: {event: paramObject}
+    data: {events: paramObject}
   }).done(function(data){
     console.log(data);
-    eventCollection.patch(data)
   })
+  eventCollection.fetch();
+  $(this).trigger('refresh');
 }
 
 EventCollection.prototype.fetch = function(){
   var self = this;
-    $.ajax({
-      url: '/events',
-      dataType: 'json',
-      method: 'get'
-    }).done(function(data){
-      for(id in data){
+  $.ajax({
+    url: '/events',
+    dataType: 'json',
+    method: 'get'
+  }).done(function(data){
+    for(id in data){
       self.add(data[id]);
-      }
-    })
+    }
+  })
 }
 
 var eventCollection = new EventCollection();
@@ -76,19 +77,11 @@ EventCollection.prototype.add = function(eventJSON){
   $(this).trigger('refresh');
 }
 
-EventCollection.prototype.patch = function(eventJSON){
-  var modelToUpdate = this.models[eventJSON.id]
-  modelToUpdate.name = eventJSON.name;
-  modelToUpdate.blurb = eventJSON.blurb;
-  modelToUpdate.info = eventJSON.info;
-  $(this).trigger('refresh');
-}
-
 function displayEntireCollection(){
   $('.events').empty().html('');
   for(id in eventCollection.models){
-    var event = eventCollection.models[id];
-    var eventView = new EventView(event);
+    var events = eventCollection.models[id];
+    var eventView = new EventView(events);
     $('.events').append(eventView.render().el);
   }
   updateItem();
@@ -97,7 +90,7 @@ function displayEntireCollection(){
 
 function setEditForm(){
   $( ".edit" ).click(function() {
-  var ItemId = $(this).parent().attr( "id" );
+    var ItemId = $(this).parent().attr( "id" );
   // console.log($(this).parent().children('li').eq(0).text());
   // console.log($(this).parent().children('li').eq(1).text());
   // console.log($(this).parent().children('li').eq(2).text());
@@ -113,16 +106,16 @@ function setEditForm(){
   // console.log($("#"+ ItemId).find('h1').replaceWith( "<input>" ));
   $(this).replaceWith("<input type='submit'>");
   $(this).after("</form>");
-  });
+});
 }
 
 function updateItem(){
-   $('.edit-form').on('submit', function(e){
-    console.log(e);
-    e.preventDefault();
-    var updatedItems = $(this).serializeArray();
-    console.log("i'm clicked");
-    console.log({id: updatedItems[3].value, name: updatedItems[0].value, blurb: updatedItems[1].value, info: updatedItems[2].value});
+ $('.edit-form').on('submit', function(e){
+  console.log(e);
+  e.preventDefault();
+  var updatedItems = $(this).serializeArray();
+  console.log("i'm clicked");
+  console.log({id: updatedItems[3].value, name: updatedItems[0].value, blurb: updatedItems[1].value, info: updatedItems[2].value});
     //FIX THIS!!!!!!
     eventCollection.update({id: updatedItems[3].value, name: updatedItems[0].value, blurb: updatedItems[1].value, info: updatedItems[2].value});
   })
@@ -139,8 +132,8 @@ $(function(){
 
 
   $('.event-form').on('submit', function(e){
-  console.log(e);
-  e.preventDefault();
+    console.log(e);
+    e.preventDefault();
   // var newEventInput = $('.event-form input[name="name"]');
   var newEventInput = $(this).serializeArray();
   console.log({name: newEventInput[0].value, blurb: newEventInput[1].value, info: newEventInput[2].value});
@@ -148,8 +141,8 @@ $(function(){
   // Insert AJAX call below
   eventCollection.create({name: newEventInput[0].value, blurb: newEventInput[1].value, info: newEventInput[2].value});
 
-    resetForm($('.event-form'));
-   })
+  resetForm($('.event-form'));
+})
 
 })
 
