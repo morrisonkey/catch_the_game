@@ -51,9 +51,9 @@ $( document ).ready(function() {
 	    $.ajax({
 			url: '/likes',
 			dataType: 'json',
-			method: 'post',
-			data: {"name": "peter"}
+			method: 'post'
 		}).done(function(data){
+			debugger
 			console.log(data);
 			
 		});
