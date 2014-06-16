@@ -37,13 +37,6 @@
 <% end %>
 <div class="ui-widget">
   <label for="tags">Search: </label>
-<%= form_tag teams_path, :method => 'get', :id => "teams_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-  <div id="teams"><%= render 'teams' %></div>
-<% end %>
   <<input id="tags" title="Search for your favorite team by name or by city.">>
 </div>
 </div>

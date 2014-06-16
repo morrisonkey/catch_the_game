@@ -16,17 +16,6 @@
 //= require_tree .
 
 $(function() {
-  $("#teams").live("click", function() {
-    $.getScript(this.href);
-    return false;
-  });
-  $("#teams_search input").keyup(function() {
-    $.get($("#teams_search").attr("action"), $("#teams_search").serialize(), null, "script");
-    return false;
-  });
-});
-
-$(function() {
     $( document ).tooltip({
       position: {
         my: "center bottom-20",

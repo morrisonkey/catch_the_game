@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.search(params[:search])
+    @teams = Team.all
+    @baseball_teams = Team.where(sport: "Baseball")
+    @mlb_teams = Team.where(league: "MLB")
   end
 
   def show
