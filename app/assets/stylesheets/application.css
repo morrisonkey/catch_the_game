@@ -106,22 +106,30 @@ h3{
   letter-spacing: 2px;
 }
 
+h5{
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 12px;
+color: #fdfdfd;
+}
+
+
 .gameinfo{
   margin: 30px 0px 0px 0px;
 }
 
 
 button{
-  height: 25px;
-  width: 65px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  color: white;
-  background-color: #272b2e;
-  border: 1px solid white;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  outline: none;
-  margin: 15px 20px 10px 0px;
+height: 25px;
+width: 65px;
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 12px;
+color: white;
+background-color: #272b2e;
+border: 1px solid white;
+text-transform: uppercase;
+letter-spacing: 1px;
+outline: none;
+margin: 15px 20px 10px 0px;
 }
 
 .center{
@@ -138,6 +146,19 @@ button{
   margin: 10px 0px 0px 0px;
 }
 
+<<<<<<< HEAD
+
+ul {
+list-style-type: none;
+}
+
+label {
+    display: inline-block;
+    width: 5em;
+    color: white;
+
+  }
+=======
 #tabs {
   background-color: gray;
 }
@@ -208,3 +229,4 @@ button{
   }
 
   /*end of style for tooltip*/
+>>>>>>> 9e20aa080aede55c22dcd9dbffd66af99e217c0f
