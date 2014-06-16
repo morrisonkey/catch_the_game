@@ -1,4 +1,4 @@
 class Membership < ActiveRecord::Base
-	belongs_to :fan
+	belongs_to :user
 	belongs_to :group
 end

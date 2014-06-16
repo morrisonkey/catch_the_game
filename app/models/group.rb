@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
-	belongs_to :fan
+	belongs_to :user
 
-	has_many :fans, through: :memberships
+	has_many :users, through: :memberships
 	has_many :memberships
 
 	has_many :likes, as: :liker
@@ -10,13 +10,14 @@ class Group < ActiveRecord::Base
 
   #I was able to slim to below down by adding the belongs_to :fan relationship up top
   def leader
-    self.fan
+    self.user
   end
 
-  #A settor using creator to complete the above getter.  Now, we can just use the word creator whereever we would have otherwise used the word fan in relation to a Group.
-  def leader=(leader_id)
-  	self.fan_id = leader_id
+  #A settor using leader to complete the above getter.  Now, we can just use the word creator whereever we would have otherwise used the word fan in relation to a Group.
+  def leader_id=(leader_id)
+  	self.user_id = leader_id
   end
+
 
   def likes
     liked = []
@@ -66,4 +67,5 @@ class Group < ActiveRecord::Base
     team = Team.where(sports_data_id: self.home)
     return team[0]
   end
+
 end

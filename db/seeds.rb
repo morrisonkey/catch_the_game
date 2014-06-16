@@ -70,13 +70,13 @@ random_bar_photo = ["http://www.thealbanybowl.com/files/bar4.jpg", "http://1.bp.
     })
 
 end
-
+i = 0
 25.times do
-
-  fan = Fan.create({
-    bio: Faker::Lorem.paragraph,
-    })
-
+    i += 1
+    User.create({
+        email: "test_email#{i}@gmail.com",
+        password: "password123"
+        })
 end
 
 
@@ -100,19 +100,19 @@ end
   Group.create({
     name: Team.all.sample.name + " Fans " + Faker::Company.suffix,
     bio: Faker::Lorem.paragraph,
-    fan_id: Fan.all.sample.id
+    user_id: User.all.sample.id
     })
 
 end
 
 
 Group.all.each do |group|
-    fans = Fan.all.shuffle
+    users = User.all.shuffle
     10.times do 
-        fan = fans.pop
+        user = users.pop
         Membership.create({
             group_id: group.id,
-            fan_id: fan.id
+            user_id: user.id
             })
     end
 end
@@ -137,4 +137,15 @@ end
     broadcast_id: Broadcast.all.sample.id
     })
 
+end
+
+5.times do 
+    todays_broadcast = Broadcast.todays_broadcasts.sample
+    Event.create({
+        broadcast_id: todays_broadcast.id,
+        venue_id: Venue.all.sample.id,
+        name: todays_broadcast.title,
+        blurb: Faker::Lorem.sentence,
+        info: Faker::Lorem.paragraph
+        })
 end

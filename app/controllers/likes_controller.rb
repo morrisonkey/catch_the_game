@@ -1,5 +1,8 @@
 class LikesController < ApplicationController
   respond_to :json
+
+  protect_from_forgery except: :create
+
   
   def index
     binding.pry
@@ -14,11 +17,15 @@ class LikesController < ApplicationController
   end
 
   def create
-    binding.pry
     # Like.create({
-
+    #   ikeable_id: 
+    #   likeable_type:
+    #   liker_id:
+    #   liker_type:
     #   })
-    render inline: "In Create"
+   
+
+    render json: current_user 
   end
 
   def edit
