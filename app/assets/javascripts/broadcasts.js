@@ -36,7 +36,10 @@ $( document ).ready(function() {
 
 	$("button").on("click", function() {
 	  var el = $(this);
-	  var parent = el.parent().val();
+	  var likeable_type = el.val();
+	  console.log(likeable_type);
+	  var likeable_id = el.attr("id");
+	  console.log(likeable_id);	
 
 	    // $( this ).effect( "slide", 90 );
       if (el.text() == el.data("text-swap")) {
@@ -51,10 +54,14 @@ $( document ).ready(function() {
 	    $.ajax({
 			url: '/likes',
 			dataType: 'json',
-			method: 'post'
+			method: 'post',
+			data: {
+				likeable_type: likeable_type,
+				likeable_id: likeable_id
+			}
 		}).done(function(data){
-			debugger
 			console.log(data);
+			
 			
 		});
     }
