@@ -106,6 +106,13 @@ color: #fdfdfd;
 letter-spacing: 2px;
 }
 
+h5{
+font-family: 'Open Sans Condensed', sans-serif;
+font-size: 12px;
+color: #fdfdfd;
+}
+
+
 .gameinfo{
 margin: 30px 0px 0px 0px;
 }
@@ -115,6 +122,7 @@ button{
 height: 25px;
 width: 65px;
 font-family: 'Open Sans Condensed', sans-serif;
+font-size: 12px;
 color: white;
 background-color: #272b2e;
 border: 1px solid white;
@@ -137,3 +145,15 @@ margin: 15px 20px 10px 0px;
   background-color: white;
   margin: 10px 0px 0px 0px;
 }
+
+
+ul {
+list-style-type: none;
+}
+
+label {
+    display: inline-block;
+    width: 5em;
+    color: white;
+
+  }

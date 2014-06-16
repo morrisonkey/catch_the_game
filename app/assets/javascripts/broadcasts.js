@@ -34,6 +34,10 @@ function Like(likeJSON){
 // }
 $( document ).ready(function() {
 
+  $(function() {
+    $( document ).tooltip();
+  });
+
 	$("button").on("click", function() {
 	  var el = $(this);
 	  var parent = el.parent().val();
