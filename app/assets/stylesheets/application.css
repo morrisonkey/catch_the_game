@@ -44,11 +44,11 @@ table {
 
 
 .navigation{
-position:fixed;
-background-color: #2f2f2f;
-height: 50px;
-width: 20000px;
-top: 0px;
+  position:fixed;
+  background-color: #2f2f2f;
+  height: 50px;
+  width: 20000px;
+  top: 0px;
 }
 
 .navbar-link{
@@ -69,59 +69,59 @@ top: 0px;
 
 
 a{
-text-decoration: none;
+  text-decoration: none;
 }
 
 body{
-background-color:#272b2e;
-padding: 0;
-margin: 0;
+  background-color:#272b2e;
+  padding: 0;
+  margin: 0;
 }
 
 
 h1{
-font-family: 'Squada One', cursive;
-font-size: 65px;
-letter-spacing: 2px;
-color: #fdfdfd;
-font-weight: 400;
-margin: 100px 0px 0px 0px;
+  font-family: 'Squada One', cursive;
+  font-size: 65px;
+  letter-spacing: 2px;
+  color: #fdfdfd;
+  font-weight: 400;
+  margin: 100px 0px 0px 0px;
 }
 
 h2{
-font-family: 'Open Sans Condensed', sans-serif;
-font-size: 45px;
-text-transform: uppercase;
-margin: 10px 0px 0px 0px;
-color: #fdfdfd;
-letter-spacing: 2px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 45px;
+  text-transform: uppercase;
+  margin: 10px 0px 0px 0px;
+  color: #fdfdfd;
+  letter-spacing: 2px;
 }
 
 h3{
-font-family: 'Open Sans Condensed', sans-serif;
-font-size: 25px;
-text-transform: uppercase;
-margin: 5px 0px 0px 0px;
-color: #fdfdfd;
-letter-spacing: 2px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin: 5px 0px 0px 0px;
+  color: #fdfdfd;
+  letter-spacing: 2px;
 }
 
 .gameinfo{
-margin: 30px 0px 0px 0px;
+  margin: 30px 0px 0px 0px;
 }
 
 
 button{
-height: 25px;
-width: 65px;
-font-family: 'Open Sans Condensed', sans-serif;
-color: white;
-background-color: #272b2e;
-border: 1px solid white;
-text-transform: uppercase;
-letter-spacing: 1px;
-outline: none;
-margin: 15px 20px 10px 0px;
+  height: 25px;
+  width: 65px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  background-color: #272b2e;
+  border: 1px solid white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  outline: none;
+  margin: 15px 20px 10px 0px;
 }
 
 .center{
@@ -141,3 +141,70 @@ margin: 15px 20px 10px 0px;
 #tabs {
   background-color: gray;
 }
+
+/*style for autocomplete to scroll and not take up so much space*/
+.ui-autocomplete {
+  max-height: 100px;
+  overflow-y: auto;
+  /* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+   * html .ui-autocomplete {
+    height: 100px;
+  }
+
+  /*end of style for autocomplete*/
+
+  /*style for tooltip that pops up helper word for search bar*/
+
+  .ui-tooltip, .arrow:after {
+    background: black;
+    border: 2px solid white;
+  }
+  .ui-tooltip {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    font: bold 14px "Helvetica Neue", Sans-Serif;
+    text-transform: uppercase;
+    box-shadow: 0 0 7px black;
+  }
+  .arrow {
+    width: 70px;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-left: -35px;
+    bottom: -16px;
+  }
+  .arrow.top {
+    top: -16px;
+    bottom: auto;
+  }
+  .arrow.left {
+    left: 20%;
+  }
+  .arrow:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -20px;
+    width: 25px;
+    height: 25px;
+    box-shadow: 6px 5px 9px -9px black;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    tranform: rotate(45deg);
+  }
+  .arrow.top:after {
+    bottom: -20px;
+    top: auto;
+  }
+
+  /*end of style for tooltip*/
