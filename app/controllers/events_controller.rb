@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
   respond_to :json
+  protect_from_forgery :except => [:update, :create]
 
   def index
     events = Event.all
@@ -25,8 +26,12 @@ class EventsController < ApplicationController
   end
 
   def update
-    event = Event.find(params[:id])
-    event.update(event_params)
+    event = Event.find_by_id(params[:id])
+    event.update({
+      name: params["events"][:name],
+      blurb: params["events"][:blurb],
+      info: params["events"][:info]
+      })
     respond_with event
   end
 
