@@ -32,11 +32,12 @@ function EventCollection(){
 
 EventCollection.prototype.create = function(paramObject){
   $.ajax({
-    url: '/events',
+    url: '/events/' + paramObject["id"],
     method: 'POST',
     dataType: 'json',
     data: {events: paramObject}
   }).done(function(data){
+    debugger
     //INSERT CALLBACK CODE HERE
     console.log(data);
     EventCollection.add(data);
@@ -63,6 +64,7 @@ EventCollection.prototype.fetch = function(){
     dataType: 'json',
     method: 'get'
   }).done(function(data){
+    debugger
     for(id in data){
       self.add(data[id]);
     }
