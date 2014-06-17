@@ -24,4 +24,28 @@ class Team < ActiveRecord::Base
     return broadcasts
   end
 
-end
+  def groups
+    groups = []
+    Group.all.each do |group|
+      if group.name.include? self.name
+        groups << group
+      end
+    end
+    Group.all.each do |group|
+      if group.bio.include? self.name
+        groups << group
+      end
+    end
+    Group.all.each do |group|
+      if group.name.include? self.market
+        groups << group
+      end
+    end
+    Group.all.each do |group|
+      if group.bio.include? self.market
+        groups << group
+      end
+    end
+    return groups
+  end
+end  

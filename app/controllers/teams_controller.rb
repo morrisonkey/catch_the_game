@@ -23,4 +23,5 @@ class TeamsController < ApplicationController
 
   def delete
   end
+
 end
