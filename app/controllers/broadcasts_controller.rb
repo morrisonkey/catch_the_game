@@ -1,9 +1,9 @@
 class BroadcastsController < ApplicationController
-  
+
   def index
-    #where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
     @todays_broadcasts = Broadcast.todays_broadcasts
     @todays_date = @todays_broadcasts[0].date_and_year
+    #where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
   end
 
   def show
@@ -24,4 +24,5 @@ class BroadcastsController < ApplicationController
 
   def delete
   end
+
 end

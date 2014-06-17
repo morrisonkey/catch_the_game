@@ -12,10 +12,22 @@
     <br>
   </sidebar>
   <article>
-    <p><%=@event.name%></p>
-    <p><%=@event.blurb%></p>
-    <p><%=@event.info%></p>
-    <p><%=@event.broadcast.datetime%></p>
-    <br>
+    <div class='event-manager'>
+  <ul class='events'>
+    <li><%=@event.broadcast.datetime%></li>
+  </ul>
+</div>
   </article>
 </div>
+
+<script id="eventTemplate" type="text/template">
+  <ul id=<%%= id %> class="event">
+  <form class="edit-form">
+    <li><h1><%%= name %></h1></li>
+    <li>blurb: <%%= blurb %></li>
+    <li>info: <%%= info %></li>
+    <input type="hidden" name="id" value=<%%= id %>>
+    <button class="edit">Edit</button>
+  </form>
+  </ul>
+</script>

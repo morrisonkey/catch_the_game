@@ -17,19 +17,24 @@
 
           <button class="likebutton" id=<%=broadcast.id %> value = "Broadcast" data-text-swap="Unlike">Like</button>
 
-          <div class = "line"></div>
 
    
           <%broadcast.events.each do |event|%>
-            <p><%=event.venue.name%> | [address] </p>
-            <p>Blurb: <%=event.blurb%></p>
-            <p>Info: <%=event.info%></p>
-        <br>
-      <% end %>
-      
-  <% end %>
+
+          <%=event.venue.name%>
+          <%=event.blurb%>
+    
+            <% end %>
+  
+              
+            <div class = "line"></div>
+          
+          <% end %>
+        
+        
+
+      </div>
+
     </div>
 
-  </div>
-
-</body>
+</body> 

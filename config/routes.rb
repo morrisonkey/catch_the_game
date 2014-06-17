@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :events
   resources :likes
 
+  get '/search/teams' => 'teams#search'
 end

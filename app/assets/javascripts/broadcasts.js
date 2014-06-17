@@ -48,6 +48,10 @@ var likeCollection = new likeCollection();
 
 $( document ).ready(function() {
 
+  $(function() {
+    $( document ).tooltip();
+  });
+
 	$("button").on("click", function() {
 	  var el = $(this);
 	  // var likeable_type = el.val();

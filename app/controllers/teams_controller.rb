@@ -23,4 +23,15 @@ class TeamsController < ApplicationController
 
   def delete
   end
+
+  def search
+    search = Search.new
+    @results = search.team_search(params[:search_parameter])
+    if @results.length < 1
+      @title = "[ #{params[:search_parameter]} not found ]"
+    else
+      @title = "[ #{params[:search_parameter]}]"
+    end
+  end
+
 end
