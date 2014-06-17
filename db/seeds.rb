@@ -4,6 +4,7 @@ Group.delete_all
 Team.delete_all
 Broadcast.delete_all
 Event.delete_all
+User.delete_all
 
 
 #Sportsdatallc.com API CALLS FOR Team INFO.
@@ -58,6 +59,16 @@ game_schedule = game_schedule[nil]
 #END of call
 
 
+
+i = 0
+25.times do
+    i += 1
+    User.create({
+        email: "test_email#{i}@gmail.com",
+        password: "password123"
+        })
+end
+
 10.times do
 
 random_bar_photo = ["http://www.thealbanybowl.com/files/bar4.jpg", "http://1.bp.blogspot.com/_m5WRB8ziRT0/TBY_wUlfEGI/AAAAAAAAATs/xNbJ8Hh867A/s1600/IMG_4152.JPG", "http://rmrequipmentrental.com/sattleraudiovideo/images/Album/Sports%20Bars/slides/Sports%20Bar%20Lights%20Pic.jpg"]
@@ -66,17 +77,10 @@ random_bar_photo = ["http://www.thealbanybowl.com/files/bar4.jpg", "http://1.bp.
     bio: Faker::Company.catch_phrase,
     city: Faker::Address.city,
     phone_number: Faker::Number.number(10),
-    photo_url: random_bar_photo.sample
+    photo_url: random_bar_photo.sample,
+    user_id: User.all.sample.id
     })
 
-end
-i = 0
-25.times do
-    i += 1
-    User.create({
-        email: "test_email#{i}@gmail.com",
-        password: "password123"
-        })
 end
 
 
