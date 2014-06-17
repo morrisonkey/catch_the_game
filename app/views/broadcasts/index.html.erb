@@ -19,8 +19,7 @@
 
    
           <%broadcast.events.each do |event|%>
-
-          <%=event.venue.name%>
+          <a href=<%= "events/#{event.id}" %>><%=event.venue.name%></a>
           <%=event.blurb%>
     
             <% end %>

@@ -1,14 +1,16 @@
-<% venue = @event.venue %>
-<h1><%= @event.name %></h1>
+
+<h1><%= @broadcast.title %></h1>
+<h3><%=@broadcast.time%></h3>
+
 <div>
   <sidebar>
-    <p>Venue: <%=venue.name%></p>
-    <p>Photo: <%=venue.photo_url%></p>
-    <p>City: <%=venue.city%></p>
-    <p>State: <%=venue.state%></p>
-    <p>Zip: <%=venue.zip%></p>
-    <p>Phone: <%=venue.phone_number%></p>
-    <p>Bio: <%=venue.bio%></p>
+    <p>Venue: <%=@venue.name%></p>
+    <p><img src=<%=@venue.photo_url%>></p>
+    <p>City: <%=@venue.city%></p>
+    <p>State: <%=@venue.state%></p>
+    <p>Zip: <%=@venue.zip%></p>
+    <p>Phone: <%=@venue.phone_number%></p>
+    <p>Bio: <%=@venue.bio%></p>
     <br>
   </sidebar>
   <article>
