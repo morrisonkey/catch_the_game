@@ -67,6 +67,10 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+.hero{
+height: 50px;
+background-color: white;
+}
 
 a{
   text-decoration: none;
