@@ -21,7 +21,8 @@
    
           <%broadcast.events.each do |event|%>
 
-          <h5><a href="#" title=<%=event.venue.name%><%=event.blurb%>>EVENTS</a>
+          <%=event.venue.name%>
+          <%=event.blurb%>
     
             <% end %>
   
