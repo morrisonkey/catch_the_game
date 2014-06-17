@@ -1,39 +1,52 @@
 <body>
   <h1> Results </h1>
   <%@results.each do |team|%>
-<h1><%=team.market + " " + team.name%></h1>
-<div>
-  <sidebar>
-    <img src="<%=team.photo_url%>" width="250" height="250"/>
-    <p>Name: <%= team.name%></p>
-    <p>City: <%=team.market%></p>
-    <p>League: <%=team.league%></p>
-    <br>
-  </sidebar>
-  <article>
-    <h3>Broadcasts:</h3>
-    <% team.broadcasts.each do |broadcast| %>
-    <h1><%= broadcast.visitor_team.name + " vs. " + broadcast.home_team.name %></h1>
-<div>
-  <sidebar>
-    <p>Date: <%=broadcast.datetime%></p>
-    <p>Visitor: <%=broadcast.visitor_team.name%></p>
-    <p>Home: <%=broadcast.home_team.name%></p>
-    <br>
-  </sidebar>
-  <article>
-    <%broadcast.events.each do |event|%>
-    <p>Title: <%=event.name%></p>
-    <p>Location: <%=event.venue.name%></p>
-    <p>Date: <%=event.broadcast.datetime%></p>
-    <p>Blurb: <%=event.blurb%></p>
-    <p>Info: <%=event.info%></p>
-    <br>
-    <% end %>
-  </article>
-</div>
-  </article>
-</div>
-<%end%>
-<% end %>
+  <h1><%=team.market + " " + team.name%></h1>
+  <div>
+    <sidebar>
+      <img src="<%=team.photo_url%>" width="250" height="250"/>
+      <p>Name: <%= team.name%></p>
+      <p>City: <%=team.market%></p>
+      <p>League: <%=team.league%></p>
+      <br>
+    </sidebar>
+    <div class = "center">
+
+      <div id = "navigation">
+        <h1><%= @todays_date %></h1>
+        <div>
+
+          <div class = "gameinfo">
+
+            <% team.broadcasts.each do |broadcast| %>
+
+            <h2><%= broadcast.title %></h2>
+
+            <h3><%=broadcast.time%></h3>
+
+            <button class="likebutton" id=<%=broadcast.id %> value = "Broadcast" data-text-swap="Unlike">Like</button>
+
+
+
+            <%broadcast.events.each do |event|%>
+
+            <%=event.venue.name%>
+            <%=event.blurb%>
+
+            <% end %>
+
+
+            <div class = "line"></div>
+
+            <% end %>
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </article>
+  </div>
+  <%end%>
 </body> 
