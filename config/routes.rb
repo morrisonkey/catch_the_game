@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  root to: "welcome#index"
+  root to: "broadcasts#index"
 
   resources :fans
   resources :groups
