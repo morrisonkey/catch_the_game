@@ -39,7 +39,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    # binding.pry
     # like = Like.where("liker_id = ? AND liker_type = ?", current_user.id, current_user.class.name).where("likeable_id = ? AND likeable_id = ?", params[:likeable_id], params[:likeable_type].classify)
 
     like_id = params[:id]

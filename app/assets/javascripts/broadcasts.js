@@ -40,21 +40,10 @@ likeCollection.prototype.destroy = function(like_id){
 			method: 'delete',
 			dataType: 'json'
 		}).done(function(like_id){
-			debugger
 			delete likeCollection.models[like_id]
 		})
 	};
-// CustomerCollection.prototype.create = function(paramObject){
-// 	var self = this
-// 	$.ajax({
-// 		url: '/customers',
-// 		method: 'post',
-// 		dataType: 'json',
-// 		data: {customer: paramObject}
-// 	}).done(function(data){	
-// 		self.add(data); 
-// 	})
-// }
+
 var likeCollection = new likeCollection();
 
 $( document ).ready(function() {
@@ -72,9 +61,8 @@ $( document ).ready(function() {
       	
         //"unlike" button
         el.text(el.data("text-original"));
-        
         like_id = el.data("like_id");
-        debugger
+        
         likeCollection.destroy(like_id);
 
       } else {
@@ -84,9 +72,11 @@ $( document ).ready(function() {
      
      
 	   	// create a Like, story it in DB, and return the corresponding like_id which I set equal to like_id
-	   	likeCollection.create(likeable_data).done(function() {
-	   		el.data("like_id", likeCollection.lastModelId);
-		});
+	   	likeCollection.create(likeable_data);
+	   	// try to change this to a chainable .done event (chainable to the above .create function)
+	   	setTimeout(function(){el.data("like_id", likeCollection.lastModelId)}, 100);
+		
     }
 
+	});
 });
