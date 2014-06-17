@@ -21,7 +21,7 @@ class Team < ActiveRecord::Base
 
   def broadcasts
     broadcasts = self.home_broadcasts + self.visitor_broadcasts
-    return broadcasts
+    return broadcasts.sort_by {|vn| vn[:datetime]}
   end
 
   def groups
@@ -47,5 +47,17 @@ class Team < ActiveRecord::Base
       end
     end
     return groups
+  end
+
+  def self.todays_broadcasts
+    todays_games = self.broadcasts.where(datetime: (Time.now.utc - 10.hour)..(Time.now.midnight.utc + 25.hour))
+    return todays_games.order(:datetime)
+  end
+
+  #0 => today, 1 => tomorrow, 2 => two days from now, etc.
+  def self.daily_broadcasts(days_from_now)
+    morning_midnight = Time.now.midnight.utc + days_from_now.day
+    daily_games = self.where(datetime: morning_midnight..(morning_midnight + 24.hour))
+    return daily_games.order(:datetime)   
   end
 end  

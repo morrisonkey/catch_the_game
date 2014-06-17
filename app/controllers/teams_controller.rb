@@ -25,12 +25,18 @@ class TeamsController < ApplicationController
   end
 
   def search
-    search = Search.new
-    @results = search.team_search(params[:search_parameter])
-    if @results.length < 1
-      @title = "[ #{params[:search_parameter]} not found ]"
+    if params[:search_parameter] != ""
+      @todays_broadcasts = Broadcast.todays_broadcasts
+      @todays_date = @todays_broadcasts[0].date_and_year
+      search = Search.new
+      @results = search.team_search(params[:search_parameter])
+      if @results.length < 1
+        @title = "No results found for #{params[:search_parameter]}"
+      else
+        @title = "#{params[:search_parameter]}"
+      end
     else
-      @title = "[ #{params[:search_parameter]}]"
+      redirect_to(:back)
     end
   end
 

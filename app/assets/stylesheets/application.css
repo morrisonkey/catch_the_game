@@ -67,6 +67,11 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+.team_logo {
+  max-width: 250px;
+  max-height: 300px;
+}
+
 
 a{
   text-decoration: none;
