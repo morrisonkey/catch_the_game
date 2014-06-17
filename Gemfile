@@ -36,6 +36,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# run gem install searchlogic
+
 gem 'devise'
 gem 'pry'
 gem 'pry-rails'

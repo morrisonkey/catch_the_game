@@ -36,10 +36,12 @@
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 
-<form class="ui-widget">
-  <input type="text" name="team_name" placeholder ="search" id="tags" title="Search for your favorite team by name or by city.">
+<div class="ui-widget">
+  <form>
+  <input type="search" name="team_name" placeholder ="search" id="tags" title="Search for your favorite team by name or by city.">
+  <input type="submit">
 </form>
-
+</div>
 
 </div>
 <!-- end of devise function edits -->
