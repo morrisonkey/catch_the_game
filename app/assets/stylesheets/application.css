@@ -68,8 +68,10 @@ table {
 }
 
 .hero{
-height: 50px;
-background-color: white;
+height: 700px;
+color: white;
+background-image:url("hero_FPO.jpg");
+margin:0 auto;
 }
 
 a{

@@ -1,14 +1,10 @@
 h1{
-font-size: 45px;
+  font-size: 45px;
 
 }
 
 .likebutton{
-height: 25px;
+  height: 25px;
 
 }
 
-.hero{
-height: 50px;
-background-color: white;
-}

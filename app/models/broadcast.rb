@@ -51,4 +51,15 @@ class Broadcast < ActiveRecord::Base
       end
   end
 
+  # def to_json
+  #   {id: id, title: title, time: time, events: events}.to_json
+  # end
+
+  # allows us to pass collections of broadcasts to Rails's render json: ... 
+  # method and have the instances turn into json correctly
+  def serializable_hash(options = nil)
+    {id: id, title: title, time: time, events: events}
+  end 
+
+
 end
