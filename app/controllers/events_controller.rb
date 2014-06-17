@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    # binding.pry
     @event = Event.find(params[:id])
     @venue = @event.venue
     @broadcast = @event.broadcast
@@ -33,7 +34,8 @@ class EventsController < ApplicationController
     respond_with event
   end
 
-  def delete
+  def destroy
+    binding.pry
   end
 
   private

@@ -17,6 +17,7 @@
 
           <button class="likebutton" id=<%=broadcast.id %> value = "Broadcast" data-text-swap="Unlike">Like</button>
 
+
    
           <%broadcast.events.each do |event|%>
           <a href=<%= "events/#{event.id}" %>><%=event.venue.name%></a>

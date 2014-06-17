@@ -1,8 +1,17 @@
 
 <h1><%= @broadcast.title %></h1>
 <h3><%=@broadcast.time%></h3>
+<p id ="blurb">Blurb: <%=@broadcast.blurb%>BlurbPlaceholder</p>
 
-<div>
+<% if current_user_the_host?(@event) %>
+  <button class="editEvent" id=<%=@event.id %> value = "Event" data-text-swap="Save">Edit</button>
+
+
+  <a href action="/events/#{@event.id}" method="delete">  <button class="deleteEvent" id=<%=@event.id %> value = "Event"> Delete</button>
+
+<% end %>
+
+
   <sidebar>
     <p>Venue: <%=@venue.name%></p>
     <p><img src=<%=@venue.photo_url%>></p>
