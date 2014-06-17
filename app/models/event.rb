@@ -4,9 +4,11 @@ class Event < ActiveRecord::Base
   belongs_to :broadcast
 
 
-  #deleted this because it says the same thing as belongs_to :broadcast
+  def is_current_user_the_host?
+  	current_user == self.venue.user
+  end
 
-  #deleted this because activerecord handles that for us
+
 
 end
   
