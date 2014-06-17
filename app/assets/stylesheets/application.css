@@ -74,6 +74,7 @@ a{
 
 body{
   background-color:#272b2e;
+  width: 1200px;
   padding: 0;
   margin: 0;
 }
@@ -143,7 +144,7 @@ margin: 15px 20px 10px 0px;
 .center{
   padding: 0;
   margin: 0;
-  width: 900px;
+  width: 600px;
   margin: 0 auto;
 }
 
@@ -235,8 +236,12 @@ label {
     top: auto;
   }
 
-  .ui-widget{
-    margin: -25px 0px 0px 1000px;
+  form{
+    margin: -20px 0px 0px 1150px;
+    outline: none;
+  }
+
+    .input{
     outline: none;
   }
 
