@@ -7,12 +7,14 @@ class Search
   end
 
   def team_search(keyword)
-    search_term = keyword.titleize
-   Team.where(name: search_term).each do |team|  
+    search_term = keyword.downcase.titleize
+    Team.where(name: search_term).each do |team|  
      @results << team
    end
-   Team.where(market: search_term).each do |team|    
-     @results << team
+   if keyword != ""
+     Team.where(market: search_term).each do |team|    
+       @results << team
+     end
    end
    return @results
  end
