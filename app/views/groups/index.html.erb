@@ -3,14 +3,14 @@
 <h2><%= group.name %></h2>
 <div>
   <sidebar>
-    <p>Creator: <%=group.creator.id%></p>
+    <p>Creator: <%=group.user_id%></p>
     <p>Bio: <%=group.bio%></p>
-    <p>Number of Members: <%=group.fans.length%></p>
+    <p>Number of Members: <%=group.users%></p>
     <br>
   </sidebar>
   <article>
     <h3>Members:</h3>
-    <% group.fans.each do |fan| %>
+    <% group.users.each do |fan| %>
     <p><%=fan.id%></p>
     <% end %>
   </article>
