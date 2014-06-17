@@ -12,10 +12,15 @@ function BroadcastCollection(date){
   this.date = date;
 }
 
+function timeConversion(date) {
+  var newDate = new Date(parseInt(date));
+  return encodeURIComponent(newDate);
+};
+
 BroadcastCollection.prototype.fetch = function(){
   var self = this;
   $.ajax({
-    url:      '/broadcasts?date=' + self.date,
+    url:      '/broadcasts?date=' + timeConversion(self.date), //convert 11 digit mishmosh to a date 
     dataType: 'json',
     method:   'get'
   }).done(function(data){
@@ -40,18 +45,18 @@ BroadcastView.prototype.render = function(){
   return this;
 }
 
-function BroadcastCollectionView(collection){
-  this.collection = collection;
+function BroadcastCollectionView(broadcastCollection){
+  this.collection = broadcastCollection;
   this.el = $("<div>").addClass("dayOfBroadcasts");
 }
 
 BroadcastCollectionView.prototype.render = function(){
   var self = this;
-  this.collection.models.forEach(function(model){
+  self.collection.models.forEach(function(model){
     var modelView = new BroadcastView(model);
     self.el.append(modelView.render().el);
   });
-  return this;
+  return self;
 }
 
 
@@ -64,10 +69,11 @@ $(document).ready(function() {
   todaysBroadcasts     = new BroadcastCollection(today);
   todaysBroadcastsView = new BroadcastCollectionView(todaysBroadcasts);
   $(todaysBroadcasts).on("fetch-complete", function(){
-    $(".forever_scroll").append(todaysBroadcastsView.render().el)
+    $(".forever_scroll").append(todaysBroadcastsView.render().el);
+    bindLikeClickEvents(); //this is here (and not in document.ready) so that $("button") exists when its listeners are called
   });
 
   todaysBroadcasts.fetch();
 
-  
+
 });

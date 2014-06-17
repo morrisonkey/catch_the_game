@@ -4,6 +4,11 @@ class BroadcastsController < ApplicationController
 
     binding.pry
 
+    day = params[:date]
+    #convert day into integer difference between such day and today
+    #pass converted day into daily_games function
+    #return daily_games function in json below
+
     @broadcasts = Broadcast.todays_broadcasts #where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)
     @todays_date = @broadcasts[0].date_and_year
 
