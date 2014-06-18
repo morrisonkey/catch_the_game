@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :likes
 
   get '/search/teams' => 'teams#search'
+  get '/delete/events/:id' => 'events#destroy'
 end
