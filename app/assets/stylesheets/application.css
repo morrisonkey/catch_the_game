@@ -99,9 +99,6 @@ table {
   margin-top: 245px;
 }
 
-a{
-  text-decoration: none;
-}
 
 body{
   background-color:#272b2e;
@@ -285,4 +282,12 @@ label {
     outline: none;
   }
 
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {  
+  color: rgba(255,255,255,.5);
+}
   /*end of style for tooltip*/

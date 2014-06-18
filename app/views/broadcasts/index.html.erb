@@ -37,7 +37,7 @@
 
   <script type="text/template" id="broadcastTemplate">
     <div class="gameinfo">
-      <h2><%%= title %></h2>
+      <h2><a href="/search/teams?search_parameter=<%%=visitor_team.name %>" search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%=home_team.name %>" search_parameter=<%%=home_team.name %>> <%%=home_team.name %></a></h2>
       <h3><%%= time %></h3>
       <h3><%%= date_and_year %></h3>
       <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
@@ -45,4 +45,4 @@
     </div>
   </script>
 
-
+<!-- <h2><a href="/search/teams/<%%=visitor_team.name%>"><%%= visitor_team.name %></a> @ <a href="/search/teams/<%%=home_team.name%>"> <%%=home_team.name %></a></h2> -->

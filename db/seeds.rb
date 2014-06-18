@@ -68,7 +68,7 @@ i = 0
         password: "password123"
         })
     Fan.create({
-        username: Faker::Name.first_name + rand(1..999),
+        username: Faker::Name.first_name + rand(1..999).to_s,
         photo_url: "https://cdn2.iconfinder.com/data/icons/simplus-users/246/Layer_4-01-512.png",
         user_id: user1.id,
         bio: "I like sports... and beer"

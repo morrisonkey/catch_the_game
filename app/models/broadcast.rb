@@ -43,7 +43,6 @@ class Broadcast < ActiveRecord::Base
     from_UTC_to_EST(self.datetime).strftime("%-I:%M %p")
   end
   
-  
   #temporary method
   def self.pretty_print(num)
       self.daily_broadcasts(num).each do |game|
@@ -58,7 +57,7 @@ class Broadcast < ActiveRecord::Base
   # allows us to pass collections of broadcasts to Rails's render json: ... 
   # method and have the instances turn into json correctly
   def serializable_hash(options = nil)
-    {id: id, title: title, time: time, events: events, date_and_year: date_and_year}
+    {id: id, title: title, time: time, events: events, date_and_year: date_and_year, visitor_team: visitor_team, home_team: home_team}
   end 
 
 
