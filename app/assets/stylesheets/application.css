@@ -122,11 +122,11 @@ body{
 
 
 h1{
-  font-family: 'Squada One', cursive;
-  font-size: 65px;
-  letter-spacing: 2px;
+  font-family: 'Oswald', sans-serif; 
+  font-size: 45px;
+  letter-spacing: 1px;
   color: #fdfdfd;
-  font-weight: 400;
+
   margin: 100px 0px 0px 0px;
 }
 
@@ -178,10 +178,10 @@ h6.find{
 
 
 button{
-  height: 25px;
+  height: 33px;
   width: 85px;
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: white;
   background-color: #272b2e;
   border: 1px solid white;
@@ -299,4 +299,5 @@ label {
   a:hover {  
     color: rgba(255,255,255,.5);
   }
+
   /*end of style for tooltip*/

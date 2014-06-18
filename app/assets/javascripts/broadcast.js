@@ -109,6 +109,7 @@ $(document).ready(function() {
     // debugger
     $(".forever_scroll").append(todaysBroadcastsView.render().el);
     bindLikeClickEvents(); //this is here (and not in document.ready) so that $("button") exists when its listeners are called
+    
   });
 
   $(window).scroll(function() {
