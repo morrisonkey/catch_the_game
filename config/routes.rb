@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   get '/search/teams' => 'teams#search'
   get '/delete/events/:id' => 'events#destroy'
+  post 'events/:id' => 'events#update'
 end

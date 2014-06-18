@@ -142,12 +142,13 @@ end
 
 10.times do
 
+    broadcast = Broadcast.all.sample
+
   event = Event.create({
-    name: Broadcast.all.sample.visitor_team.name + " vs. " + Broadcast.all.sample.home_team.name,
-    blurb: Faker::Lorem.sentence,
-    info: Faker::Lorem.paragraph,
+    name: broadcast.visitor_team.name + " vs. " + broadcast.home_team.name,
+    blurb: "1/2 off on beer before half-time",
     venue_id: Venue.all.sample.id,
-    broadcast_id: Broadcast.all.sample.id
+    broadcast_id: broadcast.id
     })
 
 end
