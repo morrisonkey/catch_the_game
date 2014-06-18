@@ -1,28 +1,35 @@
-<h2>New Event</h2>
-
-
-<h4>Event Registration List</h4>
-<div class='event-manager'>
-  <ul class='events'>
-  </ul>
-
-  <form class='event-form'>
-    <input type="text" name='name' placeholder="name">
-    <input type="text" name='blurb' placeholder="blurb">
-    <input type="text" name='info' placeholder="info">
-    <input type="submit">
-  </form>
+<div class="venue_photo" ><img src=<%=@venue.photo_url%>>
+  <h1><%= @broadcast.title %></h1>
+  <br>
+  <h3> <%=@broadcast.date_and_year%></h3>
+  <br>
+  <h3> <%=@broadcast.time%></h3>
+  <h2 id ="blurb"><%=@broadcast.blurb%>1/2 off on all well drinks until half time.</h2>
+<%= form_for @event do |f| %>
+  <%= f.text_field :name, placeholder: @broadcast.title, :size => 25%>
+<%= f.hidden_field :event_id, {value: @event.id} %>
+<%= f.submit %>
+<% end %>
 </div>
 
 
-<script id="eventTemplate" type="text/template">
-  <ul id=<%%= id %> class="event">
-  <form class="edit-form">
-    <li><h1><%%= name %></h1></li>
-    <li>blurb: <%%= blurb %></li>
-    <li>info: <%%= info %></li>
-    <input type="hidden" name="id" value=<%%= id %>>
-    <button class="edit">Edit</button>
-  </form>
-  </ul>
-</script>
+<div class="venue_info">
+  <h3><%=@venue.name%></h3>
+  <br>
+  <h4>Phone: <%=@venue.phone_number%></h4>
+  <br>
+  <h4>City: <%=@venue.city%></h4>
+  <h4>State: <%=@venue.state%></h4>
+  <h4>Zip: <%=@venue.zip%></h4>
+  <br>
+  <h4>About: <%=@venue.bio%></h4>
+  <br>
+</div>
+
+<% if current_user_the_host?(@event) %>
+<button class="editEvent" id=<%=@event.id %> value = "Event" data-text-swap="Save">Edit</button>
+
+
+<a href="/delete/events/<%=@event.id%>" class="deleteEvent" id=<%=@event.id %> value = "Event" onclick="return confirm('Are you sure you want to delete this event?')"><button> Delete</button></a>
+
+<% end %>
