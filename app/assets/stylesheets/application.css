@@ -138,6 +138,7 @@ body{
   width: 1200px;
   padding: 0;
   margin: 0;
+  color: white;
 }
 
 
@@ -217,6 +218,11 @@ button.likebutton{
   height:36px;
   width: 73px;
   margin: 20px 0px 10px 0px;
+}
+
+button.likebutton:hover{
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
 }
 
 .center{
@@ -320,13 +326,13 @@ label {
   }
 
 
-.gametitle{
-  margin: 0px 0px 0px 0px;
-}
+  .gametitle{
+    margin: 0px 0px 0px 0px;
+  }
 
-.gamedate{
-  margin: 0px 0px 0px 0px;
-}
+  .gamedate{
+    margin: 0px 0px 0px 0px;
+  }
 
 
 
@@ -378,7 +384,7 @@ label {
 }
 
 #cssmenu > ul > li > a:hover {
-text-decoration: none;
+  text-decoration: none;
 }
 
 #cssmenu > ul > li.active {
