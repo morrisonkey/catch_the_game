@@ -7,21 +7,20 @@ class EventsController < ApplicationController
   end
 
   def show
-    # binding.pry
     @event = Event.find(params[:id])
     @venue = @event.venue
     @broadcast = @event.broadcast
   end
 
-  def new
-    @event = Event.all.sample
-    @venue = @event.venue
-    @broadcast = @event.broadcast
-  end
-
   def create
-    event = Event.create(event_params)
-    respond_with event
+    broadcast = Broadcast.find_by_id(params[:id])
+    event = Event.create({
+      name: broadcast.title,
+      venue_id: current_user.venues[0].id,
+      broadcast_id: params[:id],
+      blurb: "1/2 off on beer before half-time"
+      })
+    redirect_to event_path(event)
   end
 
   def edit
