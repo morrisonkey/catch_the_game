@@ -64,7 +64,6 @@ i = 0
 25.times do
     i += 1
     User.create({
-        name: Faker.Name.name 
         email: "test_email#{i}@gmail.com",
         password: "password123"
         })
