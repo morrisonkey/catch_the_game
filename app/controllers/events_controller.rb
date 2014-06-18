@@ -12,8 +12,9 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.find_by_id(params[:id])
-    # change this later
+    @event = Event.all.sample
+    @venue = @event.venue
+    @broadcast = @event.broadcast
   end
 
   def create
