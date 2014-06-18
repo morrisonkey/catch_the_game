@@ -32,8 +32,6 @@ class TeamsController < ApplicationController
       @results = search.team_search(params[:search_parameter])
       if @results.length < 1
         @title = "No results found for #{params[:search_parameter]}"
-      else
-        @title = "#{params[:search_parameter]}"
       end
     else
       redirect_to(:back)
