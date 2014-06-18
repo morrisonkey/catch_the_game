@@ -85,10 +85,17 @@ BroadcastCollectionView.prototype.render = function(){
   self.collection.collections[self.collection.last()].forEach(function(model){
     var modelView = new BroadcastView(model);
     // when we have time, we need to create a function that accumulates the below functions and only calls them once the broadcast view has been appended to the DOM 
-    setTimeout(function(){bindLikeClickEvents(model.id)}, 100);
+    
     self.el.append(modelView.render().el);
   });
   return self;
+}
+
+BroadcastCollectionView.prototype.renderLikeListeners = function() {
+  
+  this.collection.collections[this.collection.last()].forEach(function(model){
+        bindLikeClickEvents(model.id);
+  });
 }
 
 function CollectionOfBroadcastCollectionViews(BroadcastCollectionView) {
@@ -115,6 +122,8 @@ $(document).ready(function() {
     
      // debugger
     $(".forever_scroll").append(todaysBroadcastsView.render().el);
+    
+    todaysBroadcastsView.renderLikeListeners();
 
 
 
