@@ -1,13 +1,18 @@
 <body>
-  <h1> Results </h1>
+  <h1> Results</h1>
+  <h3><%= @title %></h3>
+  <br>
+  <br>
+  <br>
   <%@results.each do |team|%>
-  <h1><%=team.market + " " + team.name%></h1>
   <div>
     <sidebar>
-      <img src="<%=team.photo_url%>" width="250" height="250"/>
-      <p>Name: <%= team.name%></p>
-      <p>City: <%=team.market%></p>
-      <p>League: <%=team.league%></p>
+      <img class="team_logo" src="<%=team.photo_url%>"/>
+      <br>
+      <br>
+      <h2><%=team.market%></h2>
+      <h3><%=team.name%></h3>
+      <h3>(<%=team.conference%>)</h3>
       <br>
     </sidebar>
     <div class = "center">
@@ -18,7 +23,9 @@
 
           <div class = "gameinfo">
 
-            <% team.broadcasts.each do |broadcast| %>
+            <% @todays_broadcasts.each do |broadcast| %>
+
+            <% if broadcast.home_team == team || broadcast.visitor_team == team %>
 
             <h2><%= broadcast.title %></h2>
 
@@ -37,7 +44,7 @@
 
 
             <div class = "line"></div>
-
+            <% end %>
             <% end %>
 
 

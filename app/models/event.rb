@@ -4,11 +4,6 @@ class Event < ActiveRecord::Base
   belongs_to :broadcast
 
 
-  def is_current_user_the_host?
-  	current_user == self.venue.user
-  end
-
-
 
 end
   

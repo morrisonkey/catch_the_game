@@ -67,11 +67,36 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+<<<<<<< HEAD
 .hero{
 height: 700px;
 color: white;
 background-image:url("hero_FPO.jpg");
 margin:0 auto;
+=======
+.team_logo {
+  max-width: 250px;
+  max-height: 300px;
+}
+
+.venue_photo {
+  width: 1280px;
+  height: 450px;
+}
+
+.venue_photo img {
+  width: 1280px;
+  height: 550px;
+  z-index: -1;
+  position: absolute; 
+  left:0px; 
+  top:0px; 
+  opacity: 0.6;
+}
+
+#blurb {
+  margin-top: 245px;
+>>>>>>> ee6c051737013f1fee27a5e620a151bcc4f2b909
 }
 
 a{
@@ -113,18 +138,27 @@ h3{
   letter-spacing: 2px;
 }
 
+h4 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  color: #fdfdfd;
+  margin: 5px 0px 0px 0px;
+  color: #fdfdfd;
+  letter-spacing: 2px;
+}
+
 h5{
-font-family: 'Open Sans Condensed', sans-serif;
-font-size: 12px;
-color: #fdfdfd;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 12px;
+  color: #fdfdfd;
 }
 
 h6.find{
-font-family: 'Open Sans Condensed', sans-serif;
-font-size: 15px;
-letter-spacing: 1px;
-color: #fdfdfd;
-margin: 0px 0px 0px 30px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #fdfdfd;
+  margin: 0px 0px 0px 30px;
 }
 
 
@@ -134,17 +168,17 @@ margin: 0px 0px 0px 30px;
 
 
 button{
-height: 25px;
-width: 65px;
-font-family: 'Open Sans Condensed', sans-serif;
-font-size: 12px;
-color: white;
-background-color: #272b2e;
-border: 1px solid white;
-text-transform: uppercase;
-letter-spacing: 1px;
-outline: none;
-margin: 15px 20px 10px 0px;
+  height: 25px;
+  width: 65px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 12px;
+  color: white;
+  background-color: #272b2e;
+  border: 1px solid white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  outline: none;
+  margin: 15px 20px 10px 0px;
 }
 
 .center{
@@ -162,15 +196,15 @@ margin: 15px 20px 10px 0px;
 }
 
 ul {
-list-style-type: none;
+  list-style-type: none;
 }
 
 label {
-    display: inline-block;
-    width: 5em;
-    color: white;
+  display: inline-block;
+  width: 5em;
+  color: white;
 
-  }
+}
 
 #tabs {
   background-color: gray;
@@ -247,7 +281,7 @@ label {
     outline: none;
   }
 
-    .input{
+  .input{
     outline: none;
   }
 

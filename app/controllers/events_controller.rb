@@ -1,16 +1,14 @@
 class EventsController < ApplicationController
 
-  respond_to :json
-  protect_from_forgery :except => [:update, :create]
-
   def index
-    events = Event.all
-    respond_with events
+    @events = Event.all
   end
 
   def show
-    event = Event.find_by_id(params[:id])
-    respond_with event
+    # binding.pry
+    @event = Event.find(params[:id])
+    @venue = @event.venue
+    @broadcast = @event.broadcast
   end
 
   def new
@@ -36,12 +34,15 @@ class EventsController < ApplicationController
     respond_with event
   end
 
-  def delete
+  def destroy
+    event = Event.find_by_id(params[:id])
+    event.destroy
+    redirect_to '/'
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:id, :name, :blurb, :info)
+    params.require(:event).permit(:id, :name, :blurb, :info, :venue_id, :broadcast_id)
   end
 end
