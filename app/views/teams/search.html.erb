@@ -1,21 +1,19 @@
 <body>
-  <h1> Results</h1>
-  <h3><%= @title %></h3>
-  <br>
-  <br>
-  <br>
-  <%@results.each do |team|%>
-  <div>
-    <sidebar>
-      <img class="team_logo" src="<%=team.photo_url%>"/>
-      <br>
-      <br>
-      <h2><%=team.market%></h2>
-      <h3><%=team.name%></h3>
-      <h3>(<%=team.conference%>)</h3>
-      <br>
-    </sidebar>
-    <div class = "center">
+  <div class = "center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3><%= @title %></h3>
+    <br>
+    <br>
+    <br>
+    <%@results.each do |team|%>
+    <div>
+      <sidebar>
+        <img class="team_logo" src="<%=team.photo_url%>"/>
+        <br>
+      </sidebar>
 
       <div id = "navigation">
         <h1><%= @todays_date %></h1>

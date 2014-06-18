@@ -99,6 +99,19 @@ table {
   margin-top: 245px;
 }
 
+#blurb_input {
+  width: 100%;
+  font-size: 18px;
+  margin-top: 232px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 45px;
+  text-transform: uppercase;
+  color: #fdfdfd;
+  letter-spacing: 2px;
+}
 
 body{
   background-color:#272b2e;
@@ -109,12 +122,12 @@ body{
 
 
 h1{
-  font-family: 'Squada One', cursive;
-  font-size: 65px;
-  letter-spacing: 2px;
+  font-family: 'Oswald', sans-serif; 
+  font-size: 45px;
+  letter-spacing: 1px;
   color: #fdfdfd;
-  font-weight: 400;
-  margin: 100px 0px 0px 0px;
+
+  margin: 125px 0px 0px 0px;
 }
 
 h2{
@@ -165,10 +178,10 @@ h6.find{
 
 
 button{
-  height: 25px;
-  width: 65px;
+  height: 33px;
+  width: 85px;
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: white;
   background-color: #272b2e;
   border: 1px solid white;
@@ -176,6 +189,14 @@ button{
   letter-spacing: 1px;
   outline: none;
   margin: 15px 20px 10px 0px;
+  float: right;
+}
+
+button.likebutton{
+  float: none;
+  height:36px;
+  width: 73px;
+  margin: 20px 0px 10px 0px;
 }
 
 .center{
@@ -189,7 +210,7 @@ button{
   height:2px;
   width: 900px;
   background-color: white;
-  margin: 10px 0px 0px 0px;
+  margin: 50px 0px 0px 0px;
 }
 
 ul {
@@ -202,6 +223,7 @@ label {
   color: white;
 
 }
+
 
 #tabs {
   background-color: gray;
@@ -273,21 +295,135 @@ label {
     top: auto;
   }
 
-  form{
-    margin: -20px 0px 0px 1150px;
-    outline: none;
-  }
-
   .input{
     outline: none;
   }
 
-a{
-  text-decoration: none;
-  color: white;
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {  
+    color: rgba(255,255,255,.5);
+  }
+
+.gametitle{
+  margin: 0px 0px 0px 0px;
 }
 
-a:hover {  
-  color: rgba(255,255,255,.5);
+.gamedate{
+  margin: 0px 0px 0px 0px;
 }
+
+
+
   /*end of style for tooltip*/
+
+
+/*  STYLING FOR EVENT MENU ALWAYS PUSH TO BOTTOM
+*/
+#cssmenu {
+  width: 200px;
+  height: 10px;
+  margin: -45px 0px 0px 145px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+}
+
+
+#cssmenu > ul > li > a {
+  padding-right: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  display: block;
+  background: #272b2e;
+  color: white;
+  border: 1px solid white;
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+#cssmenu > ul > li > a > span {
+  background: #272b2e;
+  padding: 10px;
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+#cssmenu > ul > li > a:hover {
+text-decoration: none;
+}
+
+#cssmenu > ul > li.active {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+#cssmenu > ul > li.active > a {
+  color: white;
+  text-decoration: none;
+  
+}
+#cssmenu > ul > li.active > a span {
+  background: #272b2e;
+  text-decoration: none;
+}
+
+#cssmenu span.cnt {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  text-decoration: none;
+}
+
+#cssmenu ul ul {
+  display: none;
+  text-decoration: none;
+
+}
+#cssmenu ul ul li {
+  border: 1px solid white;
+  border-top: 0;
+  text-decoration: none;
+}
+#cssmenu ul ul a {
+  padding: 10px;
+  display: block;
+  color: #272b2e;
+  font-size: 13px;
+  text-decoration: none;
+}
+#cssmenu ul ul a:hover {
+  color: #272b2e;
+  text-decoration: none;
+}
+#cssmenu ul ul li.odd {
+  background: #f4f4f4;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#cssmenu ul ul li.even {
+  background: #f4f4f4;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/*ul {
+list-style-type: none;
+}*/
+
+
+
+/*STYLING FOR EVENT PULL DOWN
+*/

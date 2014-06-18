@@ -1,15 +1,15 @@
 <div class="venue_photo" ><img src=<%=@venue.photo_url%>>
-  <h1><%= @broadcast.title %></h1>
+  <h1><%= @event.name %></h1>
   <br>
   <h3> <%=@broadcast.date_and_year%></h3>
   <br>
   <h3> <%=@broadcast.time%></h3>
-  <h2 id ="blurb"><%=@broadcast.blurb%>1/2 off on all well drinks until half time.</h2>
-<%= form_for @event do |f| %>
-  <%= f.text_field :name, placeholder: @broadcast.title, :size => 25%>
-<%= f.hidden_field :event_id, {value: @event.id} %>
-<%= f.submit %>
-<% end %>
+  <form action="/events/<%=@event.id%>" method="get">
+    <input id="blurb_input" type="text" name="blurb" placeholder="<%=@event.blurb%>"/>
+    <div style="overflow: hidden; padding-right: .5em;">
+    <input type="submit" name="submit" value="Save Blurb" style="float: right" />
+    </div>
+  </form>
 </div>
 
 
@@ -27,8 +27,6 @@
 </div>
 
 <% if current_user_the_host?(@event) %>
-<button class="editEvent" id=<%=@event.id %> value = "Event" data-text-swap="Save">Edit</button>
-
 
 <a href="/delete/events/<%=@event.id%>" class="deleteEvent" id=<%=@event.id %> value = "Event" onclick="return confirm('Are you sure you want to delete this event?')"><button> Delete</button></a>
 

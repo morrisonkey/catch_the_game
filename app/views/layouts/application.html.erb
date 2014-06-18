@@ -5,14 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
+<!--   SCRIPTS LIBRARY
+ -->
+  
   <script src="//code.jquery.com/jquery-latest.min.js"></script>
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Squada+One' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+<!--   END OF SCRIPTS LIBRARY
+ -->  
+
+<!-- FONTS LIBRARY
+ --> <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+<!-- END OF FONTS LIBRARY
+ -->
+
+<!-- STYLE SHEETS LIBRARY
+-->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-</head>
+<!-- END OF STYLE SHEETS LIBRARY
+ -->
+
+  </head>
 
 <body>
   <!-- the following is text pasted from guides.railsgirls.com/devise/ for devise login verification -->
@@ -26,9 +43,10 @@
     <% end %>
 
     <!-- the following is for devise login functions to pop up into the nave bar -->
-    <p class="navbar-text pull-right">
+    <p class="navbar-text pull-left">
     <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>
+      Logged in as <strong><%= current_user.email %></strong> |
+      <%= link_to 'Home', broadcasts_path, :class => 'navbar-link' %> |
       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
     <% else %>

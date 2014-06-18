@@ -1,12 +1,19 @@
 
 <div class="venue_photo" ><img src=<%=@venue.photo_url%>>
-  <h1><%= @broadcast.title %></h1>
+  <h1><%= @event.name %></h1>
   <br>
   <h3> <%=@broadcast.date_and_year%></h3>
   <br>
   <h3> <%=@broadcast.time%></h3>
-  <h2 id ="blurb"><%=@broadcast.blurb%>1/2 off on all well drinks until half time.</h2>
+  <h2 id ="blurb"><%=@event.blurb%></h2>
 </div>
+<% if current_user_the_host?(@event) %>
+
+<a href="/delete/events/<%=@event.id%>" class="deleteEvent" id=<%=@event.id %> value = "Event" onclick="return confirm('Are you sure you want to delete this event?')"><button> Delete</button></a>
+
+<a href="/events/<%=@event.id%>/edit"><button class="editEvent">Edit Blurb</button></a>
+
+<% end %>
 
 
 <div class="venue_info">
@@ -22,13 +29,6 @@
   <br>
 </div>
 
-<% if current_user_the_host?(@event) %>
-<button class="editEvent" id=<%=@event.id %> value = "Event" data-text-swap="Save">Edit</button>
-
-
-<a href="/delete/events/<%=@event.id%>" class="deleteEvent" id=<%=@event.id %> value = "Event" onclick="return confirm('Are you sure you want to delete this event?')"><button> Delete</button></a>
-
-<% end %>
 
 <script id="eventTemplate" type="text/template">
 <ul id=<%%= id %> class="event">

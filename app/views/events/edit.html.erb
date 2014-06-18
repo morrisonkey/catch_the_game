@@ -1,2 +1,30 @@
-<h1>Event#edit</h1>
-<p>Find me in app/views/event/edit.html.erb</p>
+<div class="venue_photo" ><img src=<%=@venue.photo_url%>>
+  <h1><%= @event.name %></h1>
+  <br>
+  <h3> <%=@broadcast.date_and_year%></h3>
+  <br>
+  <h3> <%=@broadcast.time%></h3>
+  <form action="/events/<%=@event.id%>" method="post">
+    <input id="blurb_input" type="text" name="blurb" placeholder="<%=@event.blurb%>"/>
+    <div style="overflow: hidden; padding-right: .5em;">
+<a href="/delete/events/<%=@event.id%>" class="deleteEvent" id=<%=@event.id %> value = "Event" onclick="return confirm('Are you sure you want to delete this event?')"><button> Delete</button></a>
+    <button type="submit" name="submit"/>Save</button>
+    </div>
+  </form>
+
+
+</div>
+
+
+<div class="venue_info">
+  <h3><%=@venue.name%></h3>
+  <br>
+  <h4>Phone: <%=@venue.phone_number%></h4>
+  <br>
+  <h4>City: <%=@venue.city%></h4>
+  <h4>State: <%=@venue.state%></h4>
+  <h4>Zip: <%=@venue.zip%></h4>
+  <br>
+  <h4>About: <%=@venue.bio%></h4>
+  <br>
+</div>

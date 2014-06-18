@@ -19,4 +19,5 @@ class User < ActiveRecord::Base
   def groups_as_leader
   	Group.where(user_id: self.id)
   end
+
 end

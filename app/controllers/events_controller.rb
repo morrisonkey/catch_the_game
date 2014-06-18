@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  protect_from_forgery except: [:update, :create]
+
   def index
     @events = Event.all
   end
@@ -23,16 +25,19 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find(params[:id])
+    @venue = @event.venue
+    @broadcast = @event.broadcast
+    if @event.venue.user != current_user 
+      redirect_to event_path(event)
+    end
   end
 
   def update
-    event = Event.find_by_id(params[:id])
-    event.update({
-      name: params["events"][:name],
-      blurb: params["events"][:blurb],
-      info: params["events"][:info]
-      })
-    respond_with event
+    event = Event.find(params[:id])
+    event.blurb = params[:blurb]
+    event.save
+    redirect_to event_path(event)
   end
 
   def destroy

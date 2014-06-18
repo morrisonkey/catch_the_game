@@ -7,7 +7,7 @@
       <div id = "navigation">
 
         <!-- <h1><%#= @todays_date %></h1> -->
-        <h1>Today:</h1>
+        <h1>Upcoming Games:</h1>
       </div>
 
       <!-- <div class = "gameinfo"> -->
@@ -37,10 +37,37 @@
 
   <script type="text/template" id="broadcastTemplate">
     <div class="gameinfo">
-      <h2><a href="/search/teams?search_parameter=<%%=visitor_team.name %>"search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%=home_team.name %>"search_parameter=<%%=home_team.name %>><%%=home_team.name %></a></h2>
-      <h3><%%= time %></h3>
-      <h3><%%= date_and_year %></h3>
+
+    <div class = "gametitle">
+      <h2><a href="/search/teams?search_parameter=<%%= visitor_team.name %>"search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%= home_team.name %>"search_parameter=<%%=home_team.name %>><%%=home_team.name %></a></h2>
+    </div>
+
+    <div class="gamedate">
+      <h3><%%= time %> | <%%= date_and_year %></h3>
+    </div>
+      
+      <% if current_user %>
+      <% if current_user_a_venue? %>
+      <a href="events/new?broadcast=<%%= id %>" class="deleteEvent" value="Event"><button class="likebutton"> Host</button></a>
+      <% else %>
       <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
+      <% end %>
+      <% end %>
+
+      
+
+      <div id='cssmenu'>
+        <ul>
+          <li><a href='#'><span>EVENTS</span></a>
+              <ul>
+                <li><a href='#'><span><%%= date_and_year %></span></a></li>
+                <li><a href='#'><span><%%= date_and_year %></span></a></li>
+              </ul>
+        </ul>
+      </div>
+      
+ 
+
       <div class="line"></div>
     </div>
   </script>
