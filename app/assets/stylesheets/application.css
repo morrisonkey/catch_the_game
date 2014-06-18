@@ -69,12 +69,21 @@ table {
 #blah {
   padding-top: 40px;
   margin-left: 550px;
+  white-space: nowrap;
 }
 
 #signup {
   padding-top: 40px;
   margin-left: 550px;  
+  white-space: nowrap;
 }
+
+#signin {
+  padding-top: 40px;
+  margin-left: 550px;  
+  white-space: nowrap;
+}
+
 .hero{
   height: 700px;
   color: white;
