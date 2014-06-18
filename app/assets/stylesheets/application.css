@@ -42,7 +42,6 @@ table {
   border-spacing: 0;
 }
 
-
 .navigation{
   position:fixed;
   background-color: #2f2f2f;
@@ -67,7 +66,15 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+#blah {
+  padding-top: 40px;
+  margin-left: 550px;
+}
 
+#signup {
+  padding-top: 40px;
+  margin-left: 550px;  
+}
 .hero{
   height: 700px;
   color: white;
