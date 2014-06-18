@@ -46,7 +46,12 @@ The <em>gems</em> we will likely require are:
 http://www.responsivegridsystem.com/</li>
 
 
+<h2> Trello </h2>
+<a>https://trello.com/b/z91dFOXV/project-2</a>
 
+<h2> Heroku </h2>
+
+<a> </a>
 
 
 

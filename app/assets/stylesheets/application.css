@@ -42,7 +42,6 @@ table {
   border-spacing: 0;
 }
 
-
 .navigation{
   position:fixed;
   background-color: #2f2f2f;
@@ -67,6 +66,28 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+#search_bar {
+  margin-left: 1040px;
+  margin-top: -20px;
+}
+
+#blah {
+  padding-top: 40px;
+  margin-left: 550px;
+  white-space: nowrap;
+}
+
+#signup {
+  padding-top: 40px;
+  margin-left: 550px;  
+  white-space: nowrap;
+}
+
+#signin {
+  padding-top: 40px;
+  margin-left: 550px;  
+  white-space: nowrap;
+}
 
 .hero{
   height: 700px;
@@ -96,16 +117,15 @@ table {
 }
 
 #blurb {
-  margin-top: 245px;
+  margin-top: 230px;
 }
 
 #blurb_input {
   width: 100%;
   font-size: 18px;
-  margin-top: 232px;
+  margin-top: 220px;
   background-color: transparent;
   color: white;
-  border: none;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 45px;
   text-transform: uppercase;
@@ -253,7 +273,7 @@ label {
   }
   .ui-tooltip {
     padding: 5px 5px;
-    color: white;
+    color: red;
     border-radius: 1px;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size:8px;
@@ -299,14 +319,6 @@ label {
     outline: none;
   }
 
-  a{
-    text-decoration: none;
-    color: white;
-  }
-
-  a:hover {  
-    color: rgba(255,255,255,.5);
-  }
 
 .gametitle{
   margin: 0px 0px 0px 0px;
@@ -320,6 +332,14 @@ label {
 
   /*end of style for tooltip*/
 
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {  
+    color: rgba(255,255,255,.5);
+  }
 
 /*  STYLING FOR EVENT MENU ALWAYS PUSH TO BOTTOM
 */

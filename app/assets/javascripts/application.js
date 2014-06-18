@@ -15,17 +15,22 @@
 //= require_tree .
 
 $(function() {
-    $( document ).tooltip({
+     $( document ).tooltip({
       position: {
-        my: "center bottom-20",
-        at: "center top",
+        my: "center top+20",
+        at: "center bottom",
         using: function( position, feedback ) {
+          var tool = this
+          console.log(tool)
           $( this ).css( position );
           $( "<div>" )
             .addClass( "arrow" )
             .addClass( feedback.vertical )
             .addClass( feedback.horizontal )
             .appendTo( this );
+            setTimeout(function(){
+              tool.remove()
+            }, 2500)
         }
       }
     });
