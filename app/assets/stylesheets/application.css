@@ -67,6 +67,10 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+#search_bar {
+  margin-left: 1040px;
+  margin-top: -20px;
+}
 
 .hero{
   height: 700px;
@@ -252,7 +256,7 @@ label {
   }
   .ui-tooltip {
     padding: 5px 5px;
-    color: white;
+    color: red;
     border-radius: 1px;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size:8px;
@@ -298,14 +302,6 @@ label {
     outline: none;
   }
 
-  a{
-    text-decoration: none;
-    color: white;
-  }
-
-  a:hover {  
-    color: rgba(255,255,255,.5);
-  }
 
 .gametitle{
   margin: 0px 0px 0px 0px;
@@ -319,6 +315,14 @@ label {
 
   /*end of style for tooltip*/
 
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {  
+    color: rgba(255,255,255,.5);
+  }
 
 /*  STYLING FOR EVENT MENU ALWAYS PUSH TO BOTTOM
 */
