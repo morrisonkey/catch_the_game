@@ -39,7 +39,7 @@
     <div class="gameinfo">
 
     <div class = "gametitle">
-      <h2><a href="/search/teams?search_parameter=<%%=visitor_team.name %>" search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%=home_team.name %>" search_parameter=<%%=home_team.name %>> <%%=home_team.name %></a></h2>
+      <h2><a href="/search/teams?search_parameter=<%%= visitor_team.name %>"search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%= home_team.name %>"search_parameter=<%%=home_team.name %>><%%=home_team.name %></a></h2>
     </div>
 
     <div class="gamedate">
@@ -50,7 +50,7 @@
       <% if current_user_a_venue? %>
       <a href="events/new?broadcast=<%%= id %>" class="createEvent" value="Event"><button class="likebutton"> Host</button></a>
       <% else %>
-      <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like!</button>
+      <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
       <% end %>
       <% end %>
 
@@ -67,8 +67,9 @@
       </div>
       
  
+
       <div class="line"></div>
     </div>
   </script>
 
-<!-- <h2><a href="/search/teams/<%%=visitor_team.name%>"><%%= visitor_team.name %></a> @ <a href="/search/teams/<%%=home_team.name%>"> <%%=home_team.name %></a></h2> -->
+

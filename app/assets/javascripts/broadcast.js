@@ -63,6 +63,7 @@ BroadcastCollection.prototype.fetch = function(){
 function BroadcastView(model){
   this.model = model;
   this.el = "";
+  this.id;
 }
 
 BroadcastView.prototype.render = function(){
@@ -72,15 +73,19 @@ BroadcastView.prototype.render = function(){
   return this;
 }
 
+
 function BroadcastCollectionView(broadcastCollection){
   this.collection = broadcastCollection;
   this.el = $("<div>").addClass("dayOfBroadcasts");
 }
 
+
 BroadcastCollectionView.prototype.render = function(){
   var self = this;
   self.collection.collections[self.collection.last()].forEach(function(model){
     var modelView = new BroadcastView(model);
+    // when we have time, we need to create a function that accumulates the below functions and only calls them once the broadcast view has been appended to the DOM 
+    setTimeout(function(){bindLikeClickEvents(model.id)}, 100);
     self.el.append(modelView.render().el);
   });
   return self;
@@ -103,17 +108,18 @@ var todaysBroadcasts     = new BroadcastCollection();
 var todaysBroadcastsView = new BroadcastCollectionView(todaysBroadcasts);
 var theMostIntheFutureBroadcastsView = new CollectionOfBroadcastCollectionViews(todaysBroadcastsView);
 
-console.log("Hello Keyan!");
+
 
 $(document).ready(function() {
 
-  console.log("start")
+
 
   $(todaysBroadcasts).on("fetch-complete", function(){
     
      // debugger
     $(".forever_scroll").append(todaysBroadcastsView.render().el);
-    bindLikeClickEvents(); //this is here (and not in document.ready) so that $("button") exists when its listeners are called
+
+
     
   $('#cssmenu > ul > li ul').each(function(index, element){
       var count = $(element).find('li').length;
@@ -148,6 +154,7 @@ $(document).ready(function() {
 
     });
 
+
   });
 
   $(window).scroll(function() {
@@ -159,6 +166,6 @@ $(document).ready(function() {
 
   todaysBroadcasts.fetch();
 
-console.log("End")
+
 
 });
