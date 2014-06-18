@@ -189,7 +189,13 @@ button{
   letter-spacing: 1px;
   outline: none;
   margin: 15px 20px 10px 0px;
-  float: right
+  float: right;
+}
+
+button.likebutton{
+  float: none;
+  width: 73px;
+  margin: 50px 10px 10px 10px;
 }
 
 
