@@ -38,10 +38,13 @@
   <script type="text/template" id="broadcastTemplate">
     <div class="gameinfo">
 
-
+    <div class = "gametitle">
       <h2><a href="/search/teams?search_parameter=<%%=visitor_team.name %>" search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%=home_team.name %>" search_parameter=<%%=home_team.name %>> <%%=home_team.name %></a></h2>
+    </div>
 
+    <div class="gamedate">
       <h3><%%= time %> | <%%= date_and_year %></h3>
+    </div>
       
       <% if current_user %>
       <% if current_user_a_venue? %>

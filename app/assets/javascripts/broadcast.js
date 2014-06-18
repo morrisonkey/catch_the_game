@@ -114,7 +114,7 @@ $(document).ready(function() {
     $(".forever_scroll").append(todaysBroadcastsView.render().el);
     bindLikeClickEvents(); //this is here (and not in document.ready) so that $("button") exists when its listeners are called
     
-         $('#cssmenu > ul > li ul').each(function(index, element){
+  $('#cssmenu > ul > li ul').each(function(index, element){
       var count = $(element).find('li').length;
       var content = '<span class="cnt">' + count + '</span>';
       $(element).closest('li').children('a').append(content);
@@ -146,7 +146,7 @@ $(document).ready(function() {
       }
 
     });
-    
+
   });
 
   $(window).scroll(function() {
