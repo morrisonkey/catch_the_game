@@ -179,11 +179,7 @@ h6.find{
 
 button{
   height: 33px;
-<<<<<<< HEAD
-  width: 70px;
-=======
   width: 85px;
->>>>>>> 2647ae7e0274dbc6fa1a0f2d7161bd98e64fa915
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 14px;
   color: white;
@@ -192,12 +188,13 @@ button{
   text-transform: uppercase;
   letter-spacing: 1px;
   outline: none;
-<<<<<<< HEAD
-  margin: 50px 20px 5px 0px;
-=======
   margin: 15px 20px 10px 0px;
-  float: right
->>>>>>> 2647ae7e0274dbc6fa1a0f2d7161bd98e64fa915
+  float: right;
+}
+
+button.likebutton{
+  float: none;
+  width: 73px;
 }
 
 .center{
