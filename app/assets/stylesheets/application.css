@@ -345,3 +345,113 @@ label {
   a:hover {  
     color: rgba(255,255,255,.5);
   }
+
+<<<<<<< HEAD
+=======
+/*  STYLING FOR EVENT MENU ALWAYS PUSH TO BOTTOM
+*/
+#cssmenu {
+  width: 200px;
+  height: 10px;
+  margin: -45px 0px 0px 145px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+}
+
+
+#cssmenu > ul > li > a {
+  padding-right: 40px;
+  font-size: 25px;
+  font-weight: bold;
+  display: block;
+  background: #272b2e;
+  color: white;
+  border: 1px solid white;
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+#cssmenu > ul > li > a > span {
+  background: #272b2e;
+  padding: 10px;
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+#cssmenu > ul > li > a:hover {
+  text-decoration: none;
+}
+
+#cssmenu > ul > li.active {
+  border-bottom: none;
+  text-decoration: none;
+}
+
+#cssmenu > ul > li.active > a {
+  color: white;
+  text-decoration: none;
+  
+}
+#cssmenu > ul > li.active > a span {
+  background: #272b2e;
+  text-decoration: none;
+}
+
+#cssmenu span.cnt {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  text-decoration: none;
+}
+
+#cssmenu ul ul {
+  display: none;
+  text-decoration: none;
+
+}
+#cssmenu ul ul li {
+  border: 1px solid white;
+  border-top: 0;
+  text-decoration: none;
+}
+#cssmenu ul ul a {
+  padding: 10px;
+  display: block;
+  color: #272b2e;
+  font-size: 13px;
+  text-decoration: none;
+}
+#cssmenu ul ul a:hover {
+  color: #272b2e;
+  text-decoration: none;
+}
+#cssmenu ul ul li.odd {
+  background: #f4f4f4;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#cssmenu ul ul li.even {
+  background: #f4f4f4;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+>>>>>>> 270c2ddecc6625e3f6b7391af09b1c918c0ec8c8
+
+/*ul {
+list-style-type: none;
+}*/
+
+
+
+/*STYLING FOR EVENT PULL DOWN
+*/
