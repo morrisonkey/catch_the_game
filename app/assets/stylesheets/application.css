@@ -103,16 +103,15 @@ table {
 }
 
 #blurb {
-  margin-top: 245px;
+  margin-top: 230px;
 }
 
 #blurb_input {
   width: 100%;
   font-size: 18px;
-  margin-top: 232px;
+  margin-top: 220px;
   background-color: transparent;
   color: white;
-  border: none;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 45px;
   text-transform: uppercase;
