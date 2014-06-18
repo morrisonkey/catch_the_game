@@ -99,9 +99,6 @@ table {
   margin-top: 245px;
 }
 
-a{
-  text-decoration: none;
-}
 
 body{
   background-color:#272b2e;
@@ -112,11 +109,11 @@ body{
 
 
 h1{
-  font-family: 'Squada One', cursive;
-  font-size: 65px;
-  letter-spacing: 2px;
+  font-family: 'Oswald', sans-serif; 
+  font-size: 45px;
+  letter-spacing: 1px;
   color: #fdfdfd;
-  font-weight: 400;
+
   margin: 100px 0px 0px 0px;
 }
 
@@ -168,10 +165,10 @@ h6.find{
 
 
 button{
-  height: 25px;
-  width: 65px;
+  height: 35px;
+  width: 70px;
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: white;
   background-color: #272b2e;
   border: 1px solid white;
@@ -284,5 +281,10 @@ label {
   .input{
     outline: none;
   }
+
+  a{
+  text-decoration: none;
+}
+
 
   /*end of style for tooltip*/
