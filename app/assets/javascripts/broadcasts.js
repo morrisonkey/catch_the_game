@@ -48,6 +48,7 @@ var likeCollection = new likeCollection();
 
 $( document ).ready(function() {
 
+
   $(function() {
     $( document ).tooltip();
   });
