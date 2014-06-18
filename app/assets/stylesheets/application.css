@@ -195,6 +195,7 @@ button{
 button.likebutton{
   float: none;
   width: 73px;
+  margin: 50px 10px 10px 10px;
 }
 
 .center{
