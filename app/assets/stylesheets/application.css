@@ -42,7 +42,6 @@ table {
   border-spacing: 0;
 }
 
-
 .navigation{
   position:fixed;
   background-color: #2f2f2f;
@@ -70,6 +69,24 @@ table {
 #search_bar {
   margin-left: 1040px;
   margin-top: -20px;
+}
+
+#blah {
+  padding-top: 40px;
+  margin-left: 550px;
+  white-space: nowrap;
+}
+
+#signup {
+  padding-top: 40px;
+  margin-left: 550px;  
+  white-space: nowrap;
+}
+
+#signin {
+  padding-top: 40px;
+  margin-left: 550px;  
+  white-space: nowrap;
 }
 
 .hero{
