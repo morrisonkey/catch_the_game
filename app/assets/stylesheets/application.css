@@ -67,13 +67,14 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
-<<<<<<< HEAD
+
 .hero{
-height: 700px;
-color: white;
-background-image:url("hero_FPO.jpg");
-margin:0 auto;
-=======
+  height: 700px;
+  color: white;
+  background-image:url("hero_FPO.jpg");
+  margin:0 auto;
+}
+
 .team_logo {
   max-width: 250px;
   max-height: 300px;
@@ -96,7 +97,6 @@ margin:0 auto;
 
 #blurb {
   margin-top: 245px;
->>>>>>> ee6c051737013f1fee27a5e620a151bcc4f2b909
 }
 
 a{

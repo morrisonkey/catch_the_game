@@ -46,7 +46,6 @@ likeCollection.prototype.destroy = function(like_id){
 
 var likeCollection = new likeCollection();
 
-<<<<<<< HEAD:app/assets/javascripts/like.js
 function bindLikeClickEvents(){
   // 'like' button click event!
   $("button").on("click", function() {
@@ -57,23 +56,6 @@ function bindLikeClickEvents(){
         likeable_type: el.val(),
         likeable_id: el.attr("id")
       };
-=======
-$( document ).ready(function() {
-
-
-  $(function() {
-    $( document ).tooltip();
-  });
-
-	$("button").on("click", function() {
-	  var el = $(this);
-	  // var likeable_type = el.val();
-	  // var likeable_id = el.attr("id");
-	  var likeable_data = {
-				likeable_type: el.val(),
-				likeable_id: el.attr("id")
-			};
->>>>>>> ee6c051737013f1fee27a5e620a151bcc4f2b909:app/assets/javascripts/broadcasts.js
 
       if (el.text() == el.data("text-swap")) {
         
