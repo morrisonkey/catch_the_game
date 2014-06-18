@@ -102,8 +102,11 @@ var todaysBroadcasts     = new BroadcastCollection();
 var todaysBroadcastsView = new BroadcastCollectionView(todaysBroadcasts);
 var theMostIntheFutureBroadcastsView = new CollectionOfBroadcastCollectionViews(todaysBroadcastsView);
 
+console.log("Hello Keyan!");
 
 $(document).ready(function() {
+
+  console.log("start")
 
   $(todaysBroadcasts).on("fetch-complete", function(){
     
@@ -155,5 +158,6 @@ $(document).ready(function() {
 
   todaysBroadcasts.fetch();
 
+console.log("End")
 
 });
