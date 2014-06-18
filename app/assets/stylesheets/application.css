@@ -282,9 +282,14 @@ label {
     outline: none;
   }
 
-  a{
+
+a{
   text-decoration: none;
+  color: white;
 }
 
-
+a:hover {  
+  color: rgba(255,255,255,.5);
+}
+>>>>>>> 6e11fc61de9c4704322e9b0bbe67321c9b2ec556
   /*end of style for tooltip*/
