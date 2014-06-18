@@ -1,39 +1,48 @@
-<body>
+  <!--  <div class = "hero" ></div> -->
 
+  <div class = "center">
+    <div class = "forever_scroll">
 
-    <div class = "center">
-
+      <!-- print out today's date -->
       <div id = "navigation">
-      <h1><%= @todays_date %></h1>
-      <div>
 
-      <div class = "gameinfo">
-      
-          <% @todays_broadcasts.each do |broadcast| %>
-          
-          <h2><%= broadcast.title %></h2>
-
-          <h3><%=broadcast.time%></h3>
-
-          <button class="likebutton" id=<%=broadcast.id %> value = "Broadcast" data-text-swap="Unlike">Like</button>
-
-
-   
-          <%broadcast.events.each do |event|%>
-          <a href=<%= "events/#{event.id}" %>><%=event.venue.name%></a>
-          <%=event.blurb%>
-    
-            <% end %>
-  
-              
-            <div class = "line"></div>
-          
-          <% end %>
-        
-        
-
+        <!-- <h1><%#= @todays_date %></h1> -->
+        <h1>Today:</h1>
       </div>
 
-    </div>
+      <!-- <div class = "gameinfo"> -->
 
-</body> 
+        
+        <!-- print out each broadcast (for today) -->
+        <!-- title, time, like/unlike  -->
+        <%# @todays_broadcasts.each do |broadcast| %>
+          <!-- <h2><%#= broadcast.title %></h2> -->
+          <!-- <h3><%#= broadcast.time%></h3> -->
+          <!-- <button class="likebutton" id="<%#= broadcast.id %>" value="Broadcast" data-text-swap="Unlike">Like</button> -->
+           
+          <!-- print out each event for the broadcast -->
+          <!-- venue name, blurb -->
+          <%# broadcast.events.each do |event|%>  
+            <%#=event.venue.name%>
+            <%#=event.blurb%>
+          <%# end %>
+          
+          <!-- <div class = "line"></div> -->
+        <%# end %>
+
+      <!-- </div> -->
+      
+    </div> <!-- forever_scroll -->
+  </div>
+
+  <script type="text/template" id="broadcastTemplate">
+    <div class="gameinfo">
+      <h2><%%= title %></h2>
+      <h3><%%= time %></h3>
+      <h3><%%= date_and_year %></h3>
+      <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
+      <div class="line"></div>
+    </div>
+  </script>
+
+

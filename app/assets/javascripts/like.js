@@ -46,25 +46,21 @@ likeCollection.prototype.destroy = function(like_id){
 
 var likeCollection = new likeCollection();
 
-$( document ).ready(function() {
-
-
-  $(function() {
-    $( document ).tooltip();
-  });
-
-	$("button").on("click", function() {
-	  var el = $(this);
-	  // var likeable_type = el.val();
-	  // var likeable_id = el.attr("id");
-	  var likeable_data = {
-				likeable_type: el.val(),
-				likeable_id: el.attr("id")
-			};
+function bindLikeClickEvents(){
+  // 'like' button click event!
+  $("button").on("click", function() {
+    var el = $(this);
+    // var likeable_type = el.val();
+    // var likeable_id = el.attr("id");
+    var likeable_data = {
+        likeable_type: el.val(),
+        likeable_id: el.attr("id")
+      };
 
       if (el.text() == el.data("text-swap")) {
-      	
+        
         //"unlike" button
+        
         el.text(el.data("text-original"));
         like_id = el.data("like_id");
         
@@ -76,12 +72,23 @@ $( document ).ready(function() {
         el.text(el.data("text-swap"));
      
      
-	   	// create a Like, story it in DB, and return the corresponding like_id which I set equal to like_id
-	   	likeCollection.create(likeable_data);
-	   	// try to change this to a chainable .done event (chainable to the above .create function)
-	   	setTimeout(function(){el.data("like_id", likeCollection.lastModelId)}, 100);
-		
+      // create a Like, store it in DB, and return the corresponding like_id which I set equal to like_id
+      likeCollection.create(likeable_data);
+      // try to change this to a chainable .done event (chainable to the above .create function)
+      setTimeout(function(){el.data("like_id", likeCollection.lastModelId)}, 100);
+    
     }
 
-	});
+  });
+}
+
+
+$( document ).ready(function() {
+
+  // jquery tooltip plugin
+  $(function() {
+    $( document ).tooltip();
+  });
+
+  
 });

@@ -28,7 +28,7 @@ class Broadcast < ActiveRecord::Base
   end
 
   #0 => today, 1 => tomorrow, 2 => two days from now, etc.
-  def self.daily_broadcasts(days_from_now)
+  def self.daily_broadcasts(days_from_now=0)
     morning_midnight = Time.now.midnight.utc + days_from_now.day
     daily_games = self.where(datetime: morning_midnight..(morning_midnight + 24.hour))
     return daily_games.order(:datetime)   
@@ -45,10 +45,21 @@ class Broadcast < ActiveRecord::Base
   
   
   #temporary method
-  def self.pretty_print
-      self.todays_games.each do |game|
+  def self.pretty_print(num)
+      self.daily_broadcasts(num).each do |game|
         puts game
       end
   end
+
+  # def to_json
+  #   {id: id, title: title, time: time, events: events}.to_json
+  # end
+
+  # allows us to pass collections of broadcasts to Rails's render json: ... 
+  # method and have the instances turn into json correctly
+  def serializable_hash(options = nil)
+    {id: id, title: title, time: time, events: events, date_and_year: date_and_year}
+  end 
+
 
 end

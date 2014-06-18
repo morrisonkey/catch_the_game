@@ -67,6 +67,14 @@ table {
   padding: 18px 0px 0px 35px;
 }
 
+
+.hero{
+  height: 700px;
+  color: white;
+  background-image:url("hero_FPO.jpg");
+  margin:0 auto;
+}
+
 .team_logo {
   max-width: 250px;
   max-height: 300px;
