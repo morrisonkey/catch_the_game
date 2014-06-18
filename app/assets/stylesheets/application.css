@@ -194,8 +194,9 @@ button{
 
 button.likebutton{
   float: none;
+  height:36px;
   width: 73px;
-  margin: 50px 10px 10px 10px;
+  margin: 20px 0px 10px 0px;
 }
 
 .center{
@@ -222,6 +223,7 @@ label {
   color: white;
 
 }
+
 
 #tabs {
   background-color: gray;
@@ -306,6 +308,15 @@ label {
     color: rgba(255,255,255,.5);
   }
 
+.gametitle{
+  margin: 0px 0px 0px 0px;
+}
+
+.gamedate{
+  margin: 0px 0px 0px 0px;
+}
+
+
 
   /*end of style for tooltip*/
 
@@ -313,9 +324,9 @@ label {
 /*  STYLING FOR EVENT MENU ALWAYS PUSH TO BOTTOM
 */
 #cssmenu {
-  width: 300px;
+  width: 200px;
   height: 10px;
-  margin: -40px 0px 0px 145px;
+  margin: -45px 0px 0px 145px;
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 14px;
 }
