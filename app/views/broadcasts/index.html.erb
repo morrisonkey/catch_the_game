@@ -48,7 +48,7 @@
       
       <% if current_user %>
       <% if current_user_a_venue? %>
-      <a href="events/new?broadcast=<%%= id %>" class="deleteEvent" value="Event"><button class="likebutton"> Host</button></a>
+      <a href="events/new?broadcast=<%%= id %>" class="createEvent" value="Event"><button class="likebutton"> Host</button></a>
       <% else %>
       <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like!</button>
       <% end %>
@@ -60,7 +60,7 @@
         <ul>
           <li><a href='#'><span>EVENTS</span></a>
               <ul>
-                <li><a href='#'><span><%%= date_and_year %></span></a></li>
+                <li><a href='#'><span><%%=events_venue_names[0]%></span></a></li>
                 <li><a href='#'><span><%%= date_and_year %></span></a></li>
               </ul>
         </ul>

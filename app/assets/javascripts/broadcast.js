@@ -14,6 +14,7 @@ function Broadcast(data){
   this.home_team = data.home_team;
   this.visitor_team = data.visitor_team;
   this.events = data.events;
+  this.events_venue_names = data.events_venue_names;
   this.date_and_year = data.date_and_year;
 }
 

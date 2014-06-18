@@ -4,6 +4,10 @@ class Event < ActiveRecord::Base
   belongs_to :broadcast
 
 
+  def venue_name
+    venue = Venue.where(id: self.venue_id)
+    return venue[0].name
+  end
 
 end
   

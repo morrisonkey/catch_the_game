@@ -5,6 +5,7 @@ Team.delete_all
 Broadcast.delete_all
 Event.delete_all
 User.delete_all
+Like.delete_all
 
 
 #Sportsdatallc.com API CALLS FOR Team INFO.
@@ -75,7 +76,7 @@ i = 0
         })
 end
 
-10.times do
+30.times do
 
     random_bar_photo = ["http://www.thealbanybowl.com/files/bar4.jpg", "http://1.bp.blogspot.com/_m5WRB8ziRT0/TBY_wUlfEGI/AAAAAAAAATs/xNbJ8Hh867A/s1600/IMG_4152.JPG", "http://rmrequipmentrental.com/sattleraudiovideo/images/Album/Sports%20Bars/slides/Sports%20Bar%20Lights%20Pic.jpg"]
     Venue.create({
@@ -132,34 +133,17 @@ end
 
 game_schedule.each do |broadcast|
 
-    Broadcast.create({
+    broadcast = Broadcast.create({
         visitor: broadcast[:visitor],
         home: broadcast[:home],
         datetime: broadcast[:scheduled_start]
         })
 
-end
-
-10.times do
-
-    broadcast = Broadcast.all.sample
-
-  event = Event.create({
-    name: broadcast.visitor_team.name + " vs. " + broadcast.home_team.name,
-    blurb: "1/2 off on beer before half-time",
-    venue_id: Venue.all.sample.id,
-    broadcast_id: broadcast.id
-    })
-
-end
-
-5.times do 
-    todays_broadcast = Broadcast.todays_broadcasts.sample
-    Event.create({
-        broadcast_id: todays_broadcast.id,
+    event = Event.create({
+        name: broadcast.visitor_team.name + " @ " + broadcast.home_team.name,
+        blurb: "1/2 off on beer before half-time",
         venue_id: Venue.all.sample.id,
-        name: todays_broadcast.title,
-        blurb: Faker::Lorem.sentence,
-        info: Faker::Lorem.paragraph
+        broadcast_id: broadcast.id
         })
+
 end
