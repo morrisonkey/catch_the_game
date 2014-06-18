@@ -5,6 +5,7 @@ Team.delete_all
 Broadcast.delete_all
 Event.delete_all
 User.delete_all
+Like.delete_all
 
 
 #Sportsdatallc.com API CALLS FOR Team INFO.
@@ -67,6 +68,7 @@ i = 0
         email: "test_email#{i}@gmail.com",
         password: "password123"
         })
+    
     Fan.create({
         username: Faker::Name.first_name + rand(1..999).to_s,
         photo_url: "https://cdn2.iconfinder.com/data/icons/simplus-users/246/Layer_4-01-512.png",

@@ -5,7 +5,9 @@ class LikesController < ApplicationController
 
   
   def index
-    binding.pry
+    # binding.pry
+    # broadcast_likes = Like.user_likes(current_user, )
+
     render inline: "hello"
   end
 

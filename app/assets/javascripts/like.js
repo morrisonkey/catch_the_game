@@ -20,16 +20,16 @@ likeCollection.prototype.add = function(likeJSON){
 		// displayEntireCollection();
 	};
 
-likeCollection.prototype.create = function(paramObject){
+likeCollection.prototype.create = function(likeableObject){
 		var self = this;
 		$.ajax({
 			url: '/likes',
 			method: 'post',
 			dataType: 'json',
-			data: paramObject
-		}).done(function(data){	
-			self.add(data);	
-			self.lastModelId = data.id;
+			data: likeableObject
+		}).done(function(likeModel){	
+			self.add(likeModel);	
+			self.lastModelId = likeModel.id;
 		})
 	};
 
@@ -44,11 +44,26 @@ likeCollection.prototype.destroy = function(like_id){
 		})
 	};
 
+
+// likeCollection.prototype.fetch = function(likeableObject) {
+// 		var self = this;
+// 		$.ajax({
+// 		    url: '/likes?likeable_type=', //convert 11 digit mishmosh to a date 
+// 		    dataType: 'json',
+// 		    method: 'get'
+// 	  	}).done(function(likeModels){
+// 		    likeModels.forEach(function(model){
+// 		      var like = new Like(model);
+// 		      self.models[like.id] = like;
+// 		    });
+// 		});
+// 	}	
+
 var likeCollection = new likeCollection();
 
-function bindLikeClickEvents(){
+function bindLikeClickEvents(broadcast_id){
   // 'like' button click event!
-  $("button").on("click", function() {
+  $("#" + broadcast_id).on("click", function() {
     var el = $(this);
     // var likeable_type = el.val();
     // var likeable_id = el.attr("id");
@@ -81,6 +96,65 @@ function bindLikeClickEvents(){
 
   });
 }
+
+
+function setDefaultLikeValues() {
+
+	// $("button").load(function() {
+	//     var el = $(this);
+	//     var likeable_data = {
+	//         likeable_type: el.val(),
+	//         likeable_id: el.attr("id")
+	//       };
+
+	//       console.log(likeable_data);
+
+	// });
+
+
+
+}
+
+
+// likeCollection.prototype.fetch = function(likeable_type){
+//   var self = this;
+//   // console.log(this.count);
+  // $.ajax({
+  //   url:      '/likes?likeable_type=', //convert 11 digit mishmosh to a date 
+  //   dataType: 'json',
+  //   method:   'get'
+  // }).done(function(data){
+  //   data.forEach(function(model){
+  //     var broadcast = new Broadcast(model);
+
+  //     self.models.push(broadcast);
+  //   });
+//     //as the index of the collections array increases, models stored therein correspond to a day farther into the future from today
+//     self.collections.push(self.models);
+//     self.models = [];
+//     $(self).trigger("fetch-complete");
+//   });
+// }
+// BroadcastCollection.prototype.fetch = function(){
+//   var self = this;
+//   console.log(this.count);
+//   $.ajax({
+//     url:      '/broadcasts?days_from_now=' + this.count, //convert 11 digit mishmosh to a date 
+//     dataType: 'json',
+//     method:   'get'
+//   }).done(function(data){
+//     data.forEach(function(model){
+//       var broadcast = new Broadcast(model);
+
+//       self.models.push(broadcast);
+//     });
+//     //as the index of the collections array increases, models stored therein correspond to a day farther into the future from today
+//     self.collections.push(self.models);
+//     self.models = [];
+//     $(self).trigger("fetch-complete");
+//   });
+// }
+
 
 
 $( document ).ready(function() {
