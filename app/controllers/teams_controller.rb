@@ -26,8 +26,8 @@ class TeamsController < ApplicationController
 
   def search
     if params[:search_parameter] != ""
-      @todays_broadcasts = Broadcast.todays_broadcasts
-      @todays_date = @todays_broadcasts[0].date_and_year
+      all_broadcasts = Broadcast.all
+      @todays_broadcasts = all_broadcasts.sort_by {|vn| vn[:datetime]}
       search = Search.new
       @results = search.team_search(params[:search_parameter])
       if @results.length < 1

@@ -146,5 +146,4 @@ game_schedule.each do |broadcast|
         venue_id: Venue.all.sample.id,
         broadcast_id: broadcast.id
         })
-
 end
