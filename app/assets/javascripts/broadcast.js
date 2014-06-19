@@ -2,7 +2,7 @@
 //   this.count = 0;
 // }
 
-BroadcastCollection.prototype.counter = function() {
+CollectionOfDays.prototype.counter = function() {
   this.count += 1;
 }
 
@@ -20,18 +20,21 @@ function Broadcast(data){
 }
 
 // collection (of models)
-function BroadcastCollection(){
+function DayOfBroadcasts() {
   this.models = [];
-  this.collections = [];
+  // this.collection = [];
+}
+
+function CollectionOfDays() {
+  this.count = 0;
+  this.collection = [];
   this.last = function() {
-    if ((this.collections.length - 1) < 0) {
+    if ((this.collection.length - 1) < 0) {
         return 0;  
-      } else {
-        return this.collections.length - 1;
+    } else {
+        return this.collection.length - 1;
     }
   };
-  // this.date = date;
-  this.count = 0;
 }
 
 // function timeConversion(date) {
@@ -40,8 +43,9 @@ function BroadcastCollection(){
 // };
 // timeConversion(self.date)
 
-BroadcastCollection.prototype.fetch = function(){
+CollectionOfDays.prototype.fetch = function(){
   var self = this;
+  var todaysBroadcasts = new DayOfBroadcasts;
   console.log(this.count);
   $.ajax({
     url:      '/broadcasts?days_from_now=' + this.count, //convert 11 digit mishmosh to a date 
@@ -50,12 +54,11 @@ BroadcastCollection.prototype.fetch = function(){
   }).done(function(data){
     data.forEach(function(model){
       var broadcast = new Broadcast(model);
-
-      self.models.push(broadcast);
+      todaysBroadcasts.models.push(broadcast);
     });
-    //as the index of the collections array increases, models stored therein correspond to a day farther into the future from today
-    self.collections.push(self.models);
-    self.models = [];
+    //as the index of the collection array increases, models stored therein correspond to a day farther into the future from today
+    self.collection.push(todaysBroadcasts);
+
     $(self).trigger("fetch-complete");
   });
 }
@@ -75,15 +78,16 @@ BroadcastView.prototype.render = function(){
 }
 
 
-function BroadcastCollectionView(broadcastCollection){
-  this.collection = broadcastCollection;
+function BroadcastCollectionView(collectionOfDays){
+  this.collectionPointer = collectionOfDays;
   this.el = $("<div>").addClass("dayOfBroadcasts");
 }
 
 
 BroadcastCollectionView.prototype.render = function(){
   var self = this;
-  self.collection.collections[self.collection.last()].forEach(function(model){
+
+  self.collectionPointer.collection[self.collectionPointer.last()].models.forEach(function(model){
     var modelView = new BroadcastView(model);
     // when we have time, we need to create a function that accumulates the below functions and only calls them once the broadcast view has been appended to the DOM 
     self.el.append(modelView.render().el);
@@ -94,7 +98,7 @@ BroadcastCollectionView.prototype.render = function(){
 
 BroadcastCollectionView.prototype.renderLikeListeners = function() {
    
-  this.collection.collections[this.collection.last()].forEach(function(model){
+  this.collectionPointer.collection[this.collectionPointer.last()].models.forEach(function(model){
         
         if (likeCollection.hasLikeableBeenLikedByUser(model.id)){
 
@@ -121,35 +125,34 @@ function CollectionOfBroadcastCollectionViews(BroadcastCollectionView) {
 // var todaysBroadcasts;
 // var todaysBroadcastsView;
 // var today = Date.now();
-var todaysBroadcasts     = new BroadcastCollection();
-var todaysBroadcastsView = new BroadcastCollectionView(todaysBroadcasts);
-var theMostIntheFutureBroadcastsView = new CollectionOfBroadcastCollectionViews(todaysBroadcastsView);
+var collectionOfDays = new CollectionOfDays();
+// var todaysBroadcasts     = new BroadcastCollection();
+var todaysBroadcastsView = new BroadcastCollectionView(collectionOfDays);
+// var theMostIntheFutureBroadcastsView = new CollectionOfBroadcastCollectionViews(todaysBroadcastsView);
 
 
 
 $(document).ready(function() {
 
+  likeCollection.fetch("Broadcast"); //need to figure out how to pull the url of the page on which it is being deployed to make this more general
 
 
-  $(todaysBroadcasts).on("fetch-complete", function(){
-     // debugger
-    $(".forever_scroll").append(todaysBroadcastsView.render().el);
+  $(collectionOfDays).on("fetch-complete", function(){
+       // debugger
+      $(".forever_scroll").append(todaysBroadcastsView.render().el);
 
-    
-    likeCollection.fetch("Broadcast"); //need to figure out how to pull the url of the page on which it is being deployed to make this more general
-    $(likeCollection).on("like-fetch-complete", function(){ 
-        todaysBroadcastsView.renderLikeListeners();    
-      });
+          todaysBroadcastsView.renderLikeListeners();    
+
   });
 
   $(window).scroll(function() {
-   if ($(this).scrollTop() + $(this).height() == $(document).height()) {
-       todaysBroadcasts.counter();
-       todaysBroadcasts.fetch();
-   }
+      if ($(this).scrollTop() + $(this).height() == $(document).height()) {
+           collectionOfDays.counter();
+           collectionOfDays.fetch();
+      }
   });
 
-  todaysBroadcasts.fetch();
+  collectionOfDays.fetch();
 
 
 

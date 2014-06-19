@@ -98,13 +98,22 @@ function bindLikeClickEvents(broadcast_id){
 	        el.text(el.data("text-original"));
 	        like_id = el.data("like_id");
 	        
+	        var like_count_el = el.parent().find(".likes_number");
+	        num = parseInt(like_count_el.text()) - 1;
+	        like_count_el.text(num.toString());
+
 	        likeCollection.destroy(like_id);
+
 
 	      } else {
 	        //"like" button
 	        
 	        el.data("text-original", el.text());
 	        el.text(el.data("text-swap"));
+
+	        var like_count_el = el.parent().find(".likes_number");
+	        num = parseInt(like_count_el.text()) + 1;
+	        like_count_el.text(num.toString());
 	     
 	     
 	      // create a Like, store it in DB, and return the corresponding like_id which I set equal to like_id
