@@ -62,7 +62,7 @@ game_schedule = game_schedule[nil]
 
 
 i = 0
-25.times do
+30.times do
     i += 1
     user1 = User.create({
         email: "test_email#{i}@gmail.com",
@@ -80,18 +80,20 @@ end
 
 
 
-30.times do
+15.times do
 
     random_bar_photo = ["http://www.thealbanybowl.com/files/bar4.jpg", "http://1.bp.blogspot.com/_m5WRB8ziRT0/TBY_wUlfEGI/AAAAAAAAATs/xNbJ8Hh867A/s1600/IMG_4152.JPG", "http://rmrequipmentrental.com/sattleraudiovideo/images/Album/Sports%20Bars/slides/Sports%20Bar%20Lights%20Pic.jpg"]
-    Venue.create({
-        name: Faker::Name.first_name + "'s Bar",
-        bio: Faker::Company.catch_phrase,
-        city: Faker::Address.city,
-        phone_number: Faker::Number.number(10),
-        photo_url: random_bar_photo.sample,
-        user_id: User.all.sample.id
-        })
-
+    users = User.all.sort
+    for num in (1..15)
+        Venue.create({
+            name: Faker::Name.first_name + "'s Bar",
+            bio: Faker::Company.catch_phrase,
+            city: Faker::Address.city,
+            phone_number: Faker::Number.number(10),
+            photo_url: random_bar_photo.sample,
+            user_id: users[num].id
+            })
+    end
 end
 
 baseball_team_logos = {
@@ -113,27 +115,27 @@ mlb.each do |team|
 end
 
 
-4.times do
+# 4.times do
 
-  Group.create({
-    name: Team.all.sample.name + " Fans " + Faker::Company.suffix,
-    bio: Faker::Lorem.paragraph,
-    user_id: User.all.sample.id
-    })
+#   Group.create({
+#     name: Team.all.sample.name + " Fans " + Faker::Company.suffix,
+#     bio: Faker::Lorem.paragraph,
+#     user_id: User.all.sample.id
+#     })
 
-end
+# end
 
 
-Group.all.each do |group|
-    users = User.all.shuffle
-    10.times do 
-        user = users.pop
-        Membership.create({
-            group_id: group.id,
-            user_id: user.id
-            })
-    end
-end
+# Group.all.each do |group|
+#     users = User.all.shuffle
+#     10.times do 
+#         user = users.pop
+#         Membership.create({
+#             group_id: group.id,
+#             user_id: user.id
+#             })
+#     end
+# end
 
 game_schedule.each do |broadcast|
 
