@@ -32,15 +32,15 @@
             <button class="likebutton" id=<%=broadcast.id %> value = "Broadcast" data-text-swap="Unlike">Like</button>
 
 
-
+            <div>
             <%broadcast.events.each do |event|%>
+            <span class="event_sub_list">events:</span>
+              <h3><%=event.venue.name%><span class = "h3smaller">
+      
 
-            <h3><%=event.venue.name%> :<span class = "h3smaller">
-            <%=event.blurb%></span></h3>
 
             <% end %>
-
-            
+            </div>
 
 
             <div class = "line"></div>

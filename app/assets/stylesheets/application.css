@@ -190,12 +190,20 @@ body{
 }
 
 
+
 h1{
   font-family: 'Oswald', sans-serif; 
   font-size: 45px;
   letter-spacing: 1px;
   color: #fdfdfd;
   margin: 125px 0px 0px 0px;
+}
+
+h1.main_header{
+  font-size: 200px;
+  width: 1000px;
+  letter-spacing: 4px;
+  padding-bottom: 50px;
 }
 
 h2{
