@@ -15,6 +15,10 @@ class Broadcast < ActiveRecord::Base
     return venues
   end
 
+  def likes_count
+    self.likes.length
+  end
+
   def visitor_team
    team = Team.where(sports_data_id: self.visitor)
    return team[0]
@@ -64,7 +68,7 @@ end
   # allows us to pass collections of broadcasts to Rails's render json: ... 
   # method and have the instances turn into json correctly
   def serializable_hash(options = nil)
-    {id: id, title: title, time: time, events: events, date_and_year: date_and_year, visitor_team: visitor_team, home_team: home_team, events_venue_names: events_venue_names}
+    {id: id, title: title, time: time, events: events, date_and_year: date_and_year, visitor_team: visitor_team, home_team: home_team, events_venue_names: events_venue_names, likes_count: likes_count}
   end 
 
 
