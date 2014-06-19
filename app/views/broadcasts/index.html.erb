@@ -48,21 +48,24 @@
       
       <% if current_user %>
       <% if current_user_a_venue? %>
-      <a href="events/new?broadcast=<%%= id %>" class="createEvent" value="Event"><button class="likebutton"> Host</button></a>
+     <a href="events/new?broadcast=<%%= id %>" class="createEvent" value="Event"><button class="likebutton"> Host</button></a>
       <% else %>
       
       <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
       <% end %>
-      <% end %>
+      <% end %><span class="likes_count" >Likes: (<%%= likes_count %>)</span>
 
       
 
       <div id='cssmenu'>
+        <br>
         <ul>
-          <li><a href='#'><span>EVENTS</span></a>
+          <li><span>EVENTS</span>
               <ul>
-                <li><a href='#'><span><%%=events_venue_names[0]%></span></a></li>
-                <li><a href='#'><span><%%= date_and_year %></span></a></li>
+                <%% if(events[0]) { %>
+                <li><a href='/events/<%%= events[0].id %>'><span><%%=events_venue_names[0]%></span></a></li>
+                <%% } else { %>
+                  <%% ("None");} %>
               </ul>
         </ul>
       </div>
