@@ -75,7 +75,10 @@ i = 0
         user_id: user1.id,
         bio: "I like sports... and beer"
         })
+
 end
+
+
 
 30.times do
 
@@ -139,11 +142,23 @@ game_schedule.each do |broadcast|
         home: broadcast[:home],
         datetime: broadcast[:scheduled_start]
         })
-
+    blurbs = ["1/2 off on beer before half-time", "Come watch the big game with us", "Half off drinks to all wearing home team jersey", "$8 Dollar Pitchers all night", "Come for the game, stay for the company", "Get tore up from the floor up", "Turned down for what!?", "This is going to be one fun night", "Bring all of your friends", "Karaoke directly after the game", "Winning team jersey will get you a free beer", "Time to party!!!", "First drink is half off for all fans", "Don't miss this special event"]
     event = Event.create({
         name: broadcast.visitor_team.name + " @ " + broadcast.home_team.name,
-        blurb: "1/2 off on beer before half-time",
+        blurb: blurbs.sample,
         venue_id: Venue.all.sample.id,
         broadcast_id: broadcast.id
         })
+end
+
+User.all.each do |user|
+    broadcasts = Broadcast.all.shuffle
+    for num in (1..75)
+        Like.create({
+            liker_id: user.id,
+            liker_type: "User",
+            likeable_id: broadcasts[num].id,
+            likeable_type: "Broadcast"
+            })
+    end
 end
