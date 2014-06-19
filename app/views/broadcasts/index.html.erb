@@ -1,12 +1,14 @@
   <!--  <div class = "hero" ></div> -->
 
-<div class = "center">
-  <div class = "forever_scroll">
+  <div class = "center">
+    <div class = "forever_scroll">
 
       <!-- print out today's date -->
+      <div id = "navigation">
 
         <!-- <h1><%#= @todays_date %></h1> -->
         <h1>Upcoming Games:</h1>
+      </div>
 
       <!-- <div class = "gameinfo"> -->
 
@@ -30,10 +32,11 @@
 
       <!-- </div> -->
       
-   <!-- forever_scroll -->
-  
+    </div> <!-- forever_scroll -->
+  </div>
 
   <script type="text/template" id="broadcastTemplate">
+    <div class="gameinfo">
 
     <div class = "gametitle">
       <h2><a href="/search/teams?search_parameter=<%%= visitor_team.name %>"search_parameter=<%%=visitor_team.name %>><%%= visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%%= home_team.name %>"search_parameter=<%%=home_team.name %>><%%=home_team.name %></a></h2>
@@ -42,26 +45,32 @@
     <div class="gamedate">
       <h3><%%= time %> | <%%= date_and_year %></h3>
     </div>
-    
-    <div class = "buttonlock">
+      
       <% if current_user %>
-       <% if current_user_a_venue? %>
-        <form action="/events" method="post">
-        <input type="hidden" name="id" value="<%%= id %>">
-        <button class="likebutton" type="submit">Host</button>
-        </form>
-        <% else %>  
-          <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
-        <% end %>
+      <% if current_user_a_venue? %>
+      <a href="events/new?broadcast=<%%= id %>" class="createEvent" value="Event"><button class="likebutton"> Host</button></a>
+      <% else %>
+      
+      <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
+      <% end %>
       <% end %>
 
+      
 
-    <div class="line"></div>
+      <div id='cssmenu'>
+        <ul>
+          <li><a href='#'><span>EVENTS</span></a>
+              <ul>
+                <li><a href='#'><span><%%=events_venue_names[0]%></span></a></li>
+                <li><a href='#'><span><%%= date_and_year %></span></a></li>
+              </ul>
+        </ul>
+      </div>
+      
+ 
 
-  </div>
-</div>
-
-  
+      <div class="line"></div>
+    </div>
   </script>
 
 
