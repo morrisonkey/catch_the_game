@@ -23,28 +23,49 @@
 
             <% @todays_broadcasts.each do |broadcast| %>
 
-            <% if broadcast.home_team == team || broadcast.visitor_team == team %>
+    <div class="gameinfo">
 
-            <h2><%= broadcast.title %></h2>
+    <div class = "gametitle">
+      <h2><a href="/search/teams?search_parameter=<%= broadcast.visitor_team.name %>"search_parameter=<%=broadcast.visitor_team.name %>><%= broadcast.visitor_team.name %></a> @ <a href="/search/teams?search_parameter=<%=  broadcast.home_team.name %>"search_parameter=<%=broadcast.home_team.name %>><%= broadcast.home_team.name %></a></h2>
+    </div>
 
-            <h3><%=broadcast.time%> | <%= broadcast.date_and_year%></h3>
+    <div class="gamedate">
+      <h3><%= broadcast.time %> | <%= broadcast.date_and_year %></h3>
+    </div>
+      
+      <% if current_user %>
+      <% if current_user_a_venue? %>
+     <form action="/events" method="post">
+     <input type="hidden" name="id" value="<%= broadcast.id %>">
+     <button class="likebutton" type="submit">Host</button>
+     </form>
+      <% else %>
+      
+      <button class="likebutton" id="<%= broadcast.id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
+      <% end %>
+      <% end %><span class="likes_count" >Likes:</span> <span class ="likes_number"><%= broadcast.likes_count %></span>
 
-            <button class="likebutton" id=<%=broadcast.id %> value = "Broadcast" data-text-swap="Unlike">Like</button>
+      
 
+      <div id='cssmenu'>
+        <br>
+        <ul>
+          <li><span class="event_sub_list">events:</span>
+              <span class = "event_sub_list_info"><ul>
+                <% if broadcast.events[0] %>
+                <li><a href='/events/<%%= events[0].id %>'><%=broadcast.events_venue_names[0]%></a></li></span>
+                <% else %>
+                  <li>None</li>
+                  <% end %>
+              </ul>
+              <br>
+        </ul>
+      </div>
+      
+ 
 
-
-            <%broadcast.events.each do |event|%>
-
-            <h3><%=event.venue.name%> :<span class = "h3smaller">
-            <%=event.blurb%></span></h3>
-
-            <% end %>
-
-            
-
-
-            <div class = "line"></div>
-            <% end %>
+      <div class="line"></div>
+    </div>
             <% end %>
 
 

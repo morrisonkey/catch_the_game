@@ -7,7 +7,7 @@
       <div id = "navigation">
 
         <!-- <h1><%#= @todays_date %></h1> -->
-        <h1>Upcoming Games:</h1>
+        <h1>upcoming games</h1>
       </div>
 
       <!-- <div class = "gameinfo"> -->
@@ -48,12 +48,15 @@
       
       <% if current_user %>
       <% if current_user_a_venue? %>
-     <a href="events/new?broadcast=<%%= id %>" class="createEvent" value="Event"><button class="likebutton"> Host</button></a>
+     <form action="/events" method="post">
+     <input type="hidden" name="id" value="<%%= id %>">
+     <button class="likebutton" type="submit">Host</button>
+     </form>
       <% else %>
       
       <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
       <% end %>
-      <% end %><span class="likes_count" >Likes:</span> <span class ="likes_number"><%%= likes_count %></span>
+      <% end %><span class="likes_count" ></span> <span class ="likes_number"><%%= likes_count %> People want to see this</span>
 
       
 
@@ -65,8 +68,10 @@
                 <%% if(events[0]) { %>
                 <li><a href='/events/<%%= events[0].id %>'><%%=events_venue_names[0]%></a></li></span>
                 <%% } else { %>
-                  <%% ("None");} %>
+                  <li>None</li>
+                  <%% } %>
               </ul>
+              <br>
         </ul>
       </div>
       
