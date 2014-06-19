@@ -54,7 +54,7 @@
               <span class = "event_sub_list_info"><ul>
                 <% if broadcast.events[0] %>
                 <% broadcast.events.each do |event| %>
-                <li><a href='/events/<%%= event.id %>'><%=event.venue.name%></a></li></span>
+                <li><a href='/events/<%= event.id %>'><%=event.venue.name%></a></li></span>
                 <% end %>
                 <% else %>
                   <li>None</li>
