@@ -62,11 +62,14 @@
         <ul>
           <li><span>EVENTS</span>
               <ul>
+              <br>
                 <%% if(events[0]) { %>
                 <li><a href='/events/<%%= events[0].id %>'><span><%%=events_venue_names[0]%></span></a></li>
                 <%% } else { %>
-                  <%% ("None");} %>
+                  <li>None</li>
+                  <%% } %>
               </ul>
+              <br>
         </ul>
       </div>
       
