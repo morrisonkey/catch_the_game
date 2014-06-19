@@ -12,6 +12,7 @@ function Like(likeJSON){
 function likeCollection(){
 	this.models = {};
 	this.lastModelId;
+	this.currentModelInHasLikeBeenFunction;
 }
 
 likeCollection.prototype.add = function(likeJSON){
@@ -45,19 +46,35 @@ likeCollection.prototype.destroy = function(like_id){
 	};
 
 
-// likeCollection.prototype.fetch = function(likeableObject) {
-// 		var self = this;
-// 		$.ajax({
-// 		    url: '/likes?likeable_type=', //convert 11 digit mishmosh to a date 
-// 		    dataType: 'json',
-// 		    method: 'get'
-// 	  	}).done(function(likeModels){
-// 		    likeModels.forEach(function(model){
-// 		      var like = new Like(model);
-// 		      self.models[like.id] = like;
-// 		    });
-// 		});
-// 	}	
+likeCollection.prototype.fetch = function(likeableType) {
+		var self = this;
+		$.ajax({
+		    url: '/likes?likeable_type=' + likeableType, 
+		    dataType: 'json',
+		    method: 'get'
+	  	}).done(function(userLikes){
+		    userLikes.forEach(function(model){
+		      var like = new Like(model);
+		      self.models[like.id] = like;
+		    });
+		    $(self).trigger("like-fetch-complete");
+		});
+	}	
+
+likeCollection.prototype.hasLikeableBeenLikedByUser = function(likeable_id) {
+// $.each( obj, function( key, value ) {
+//   alert( key + ": " + value );
+// });
+	var bool = false;
+	var self = this;
+	$.each(self.models, function(key, value) {
+		if (value.likeable_id === likeable_id) {
+			bool = true
+			self.currentModelInHasLikeBeenFunction = key
+		}
+	});
+	return bool;
+}
 
 var likeCollection = new likeCollection();
 
@@ -72,48 +89,51 @@ function bindLikeClickEvents(broadcast_id){
         likeable_id: el.attr("id")
       };
 
-      if (el.text() == el.data("text-swap")) {
-        
-        //"unlike" button
-        
-        el.text(el.data("text-original"));
-        like_id = el.data("like_id");
-        
-        likeCollection.destroy(like_id);
+	
+    // if (el.text())  
+	    if (el.text() == el.data("text-swap")) {
+	        
+	        //"unlike" button
+	        
+	        el.text(el.data("text-original"));
+	        like_id = el.data("like_id");
+	        
+	        likeCollection.destroy(like_id);
 
-      } else {
-        //"like" button
-        el.data("text-original", el.text());
-        el.text(el.data("text-swap"));
-     
-     
-      // create a Like, store it in DB, and return the corresponding like_id which I set equal to like_id
-      likeCollection.create(likeable_data);
-      // try to change this to a chainable .done event (chainable to the above .create function)
-      setTimeout(function(){el.data("like_id", likeCollection.lastModelId)}, 100);
-    
-    }
+	      } else {
+	        //"like" button
+	        
+	        el.data("text-original", el.text());
+	        el.text(el.data("text-swap"));
+	     
+	     
+	      // create a Like, store it in DB, and return the corresponding like_id which I set equal to like_id
+	      likeCollection.create(likeable_data);
+	      // try to change this to a chainable .done event (chainable to the above .create function)
+	      setTimeout(function(){el.data("like_id", likeCollection.lastModelId)}, 100);
+	    
+	    }
 
   });
 }
 
 
-function setDefaultLikeValues() {
+// function setDefaultLikeValues() {
 
-	// $("button").load(function() {
-	//     var el = $(this);
-	//     var likeable_data = {
-	//         likeable_type: el.val(),
-	//         likeable_id: el.attr("id")
-	//       };
+// 	// $("button").load(function() {
+// 	//     var el = $(this);
+// 	//     var likeable_data = {
+// 	//         likeable_type: el.val(),
+// 	//         likeable_id: el.attr("id")
+// 	//       };
 
-	//       console.log(likeable_data);
+// 	//       console.log(likeable_data);
 
-	// });
+// 	// });
 
 
 
-}
+// }
 
 
 // likeCollection.prototype.fetch = function(likeable_type){
@@ -158,7 +178,7 @@ function setDefaultLikeValues() {
 
 
 $( document ).ready(function() {
-
+	console.log("hello now");
   // jquery tooltip plugin
   $(function() {
     $( document ).tooltip();

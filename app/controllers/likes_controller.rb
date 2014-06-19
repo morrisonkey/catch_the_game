@@ -6,9 +6,11 @@ class LikesController < ApplicationController
   
   def index
     # binding.pry
-    # broadcast_likes = Like.user_likes(current_user, )
+    likeable_type = params[:likeable_type]
 
-    render inline: "hello"
+    user_likes = Like.user_likes(current_user, likeable_type)
+    # binding.pry
+    render json: user_likes
   end
 
   def show
