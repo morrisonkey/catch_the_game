@@ -59,10 +59,11 @@
 
       <div id='cssmenu'>
         <ul>
-          <li><a href='#'><span>EVENTS</span></a>
+          <li><span>EVENTS</span>
               <ul>
-                <li><a href='#'><span><%%=events_venue_names[0]%></span></a></li>
-                <li><a href='#'><span><%%= date_and_year %></span></a></li>
+                <%% if(events) { %>
+                <li><a href='/events/<%%= events[0].id %>'><span><%%=events_venue_names[0]%></span></a></li>
+                <%% } %>
               </ul>
         </ul>
       </div>
