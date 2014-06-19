@@ -381,7 +381,32 @@ label {
     margin: 0px 0px 0px 0px;
   }
 
+  .likes_count{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size:12px;
+    margin: 0px 0px 0px 10px;
+    letter-spacing: 1px;
+  }
 
+  .likes_number{
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 16px;
+  }
+
+  .event_sub_list{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+   .event_sub_list_info{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 
   /*end of style for tooltip*/
 

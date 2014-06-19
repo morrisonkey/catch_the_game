@@ -53,17 +53,17 @@
       
       <button class="likebutton" id="<%%= id %>" value="Broadcast" data-text-swap="Unlike">Like</button>
       <% end %>
-      <% end %><span class="likes_count" >Likes: (<%%= likes_count %>)</span>
+      <% end %><span class="likes_count" >Likes:</span> <span class ="likes_number"><%%= likes_count %></span>
 
       
 
       <div id='cssmenu'>
         <br>
         <ul>
-          <li><span>EVENTS</span>
-              <ul>
+          <li><span class="event_sub_list">events:</span>
+              <span class = "event_sub_list_info"><ul>
                 <%% if(events[0]) { %>
-                <li><a href='/events/<%%= events[0].id %>'><span><%%=events_venue_names[0]%></span></a></li>
+                <li><a href='/events/<%%= events[0].id %>'><%%=events_venue_names[0]%></a></li></span>
                 <%% } else { %>
                   <%% ("None");} %>
               </ul>
