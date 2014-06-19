@@ -22,7 +22,7 @@
           <div class = "gameinfo">
 
             <% @todays_broadcasts.each do |broadcast| %>
-
+            <% if broadcast.home_team == team || broadcast.visitor_team == team %>
     <div class="gameinfo">
 
     <div class = "gametitle">
@@ -69,7 +69,7 @@
       <div class="line"></div>
     </div>
             <% end %>
-
+            <% end %>
 
 
           </div>
