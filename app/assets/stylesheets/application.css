@@ -190,12 +190,20 @@ body{
 }
 
 
+
 h1{
   font-family: 'Oswald', sans-serif; 
   font-size: 45px;
   letter-spacing: 1px;
   color: #fdfdfd;
   margin: 125px 0px 0px 0px;
+}
+
+h1.main_header{
+  font-size: 200px;
+  width: 1000px;
+  letter-spacing: 4px;
+  padding-bottom: 50px;
 }
 
 h2{
@@ -381,7 +389,32 @@ label {
     margin: 0px 0px 0px 0px;
   }
 
+  .likes_count{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size:12px;
+    margin: 0px 0px 0px 10px;
+    letter-spacing: 1px;
+  }
 
+  .likes_number{
+
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 16px;
+  }
+
+  .event_sub_list{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+   .event_sub_list_info{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 
   /*end of style for tooltip*/
 

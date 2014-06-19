@@ -95,9 +95,18 @@ BroadcastCollectionView.prototype.render = function(){
 BroadcastCollectionView.prototype.renderLikeListeners = function() {
    
   this.collection.collections[this.collection.last()].forEach(function(model){
+        
+        if (likeCollection.hasLikeableBeenLikedByUser(model.id)){
+
+            var $button = $("#" + model.id);
+            $button.data("text-original", $button.text());
+            $button.text($button.data("text-swap"));
+            $button.data("like_id", likeCollection.currentModelInHasLikeBeenFunction);
+        }
          bindLikeClickEvents(model.id);
    });
- }
+
+}
 
 function CollectionOfBroadcastCollectionViews(BroadcastCollectionView) {
   this.collectionOfCollections = [];
@@ -125,7 +134,12 @@ $(document).ready(function() {
   $(todaysBroadcasts).on("fetch-complete", function(){
      // debugger
     $(".forever_scroll").append(todaysBroadcastsView.render().el);
-    todaysBroadcastsView.renderLikeListeners();
+
+    
+    likeCollection.fetch("Broadcast"); //need to figure out how to pull the url of the page on which it is being deployed to make this more general
+    $(likeCollection).on("like-fetch-complete", function(){ 
+        todaysBroadcastsView.renderLikeListeners();    
+      });
   });
 
   $(window).scroll(function() {
