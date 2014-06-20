@@ -73,6 +73,7 @@ likeCollection.prototype.hasLikeableBeenLikedByUser = function(likeable_id) {
 			self.currentModelInHasLikeBeenFunction = key
 		}
 	});
+	debug("hasLikeableBeenLikedByUser determined");
 	return bool;
 }
 

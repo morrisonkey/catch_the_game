@@ -46,12 +46,14 @@ function CollectionOfDays() {
 CollectionOfDays.prototype.fetch = function(){
   var self = this;
   var todaysBroadcasts = new DayOfBroadcasts;
-  console.log(this.count);
+  debug("CollectionOfDays fetching: count = " + this.count );
+
   $.ajax({
     url:      '/broadcasts?days_from_now=' + this.count, //convert 11 digit mishmosh to a date 
     dataType: 'json',
     method:   'get'
   }).done(function(data){
+    debug("CollectionOfDays fetch AJAX done");
     data.forEach(function(model){
       var broadcast = new Broadcast(model);
       todaysBroadcasts.models.push(broadcast);
@@ -71,6 +73,7 @@ function BroadcastView(model){
 }
 
 BroadcastView.prototype.render = function(){
+  debug("Broadcast view rendering");
   var broadcastTemplate = _.template($("#broadcastTemplate").text());
   var broadcastHTML     = broadcastTemplate(this.model);
   this.el = $( broadcastHTML );
@@ -85,8 +88,8 @@ function BroadcastCollectionView(collectionOfDays){
 
 
 BroadcastCollectionView.prototype.render = function(){
+  debug("BroadcastCollection view rendering");
   var self = this;
-
   self.collectionPointer.collection[self.collectionPointer.last()].models.forEach(function(model){
     var modelView = new BroadcastView(model);
     // when we have time, we need to create a function that accumulates the below functions and only calls them once the broadcast view has been appended to the DOM 
@@ -97,28 +100,31 @@ BroadcastCollectionView.prototype.render = function(){
 
 
 BroadcastCollectionView.prototype.renderLikeListeners = function() {
-   
-  this.collectionPointer.collection[this.collectionPointer.last()].models.forEach(function(model){
-        
-        if (likeCollection.hasLikeableBeenLikedByUser(model.id)){
-
-            var $button = $("#" + model.id);
-            $button.data("text-original", $button.text());
-            $button.text($button.data("text-swap"));
-            $button.data("like_id", likeCollection.currentModelInHasLikeBeenFunction);
-        }
-         bindLikeClickEvents(model.id);
-   });
-
+  debug("BroadcastCollection rendering LikeListeners");
+  
+  this.collectionPointer.collection[this.collectionPointer.last()].models.forEach(function(broadcastModel){
+    if (likeCollection.hasLikeableBeenLikedByUser(broadcastModel.id)){
+      debug("LikeListener rendering");
+      //at this point, the like/unlike "text-swap" button has already been set up.  This "if"
+      //statement is supposed to change the text in a blink indiscernable to the naked eye
+      //and add the data "like_id" => Like_id (corresponding to the this broadcast and current_user)
+      //to the data() hash
+      var $button = $("#" + broadcastModel.id);
+      $button.data("text-original", $button.text());
+      $button.text($button.data("text-swap"));
+      $button.data("like_id", likeCollection.currentModelInHasLikeBeenFunction);
+    }
+    bindLikeClickEvents(broadcastModel.id);
+  });
 }
 
-function CollectionOfBroadcastCollectionViews(BroadcastCollectionView) {
-  this.collectionOfCollections = [];
-  this.el = "";
-  this.collectionOfCollections.push(BroadcastCollectionView);
-  this.last = this.collectionOfCollections.length - 1; 
+// function CollectionOfBroadcastCollectionViews(BroadcastCollectionView) {
+//   this.collectionOfCollections = [];
+//   this.el = "";
+//   this.collectionOfCollections.push(BroadcastCollectionView);
+//   this.last = this.collectionOfCollections.length - 1; 
 
-}
+// }
 
 
 // global variables
@@ -134,26 +140,25 @@ var todaysBroadcastsView = new BroadcastCollectionView(collectionOfDays);
 
 $(document).ready(function() {
 
+  debug("Fetching like collection");
   likeCollection.fetch("Broadcast"); //need to figure out how to pull the url of the page on which it is being deployed to make this more general
 
 
   $(collectionOfDays).on("fetch-complete", function(){
-       // debugger
-      $(".forever_scroll").append(todaysBroadcastsView.render().el);
+    debug("CollectionOfDays fetch complete");
+    $(".forever_scroll").append(todaysBroadcastsView.render().el);
 
-          todaysBroadcastsView.renderLikeListeners();    
-
+    todaysBroadcastsView.renderLikeListeners();
   });
 
   $(window).scroll(function() {
-      if ($(this).scrollTop() + $(this).height() == $(document).height()) {
-           collectionOfDays.counter();
-           collectionOfDays.fetch();
-      }
+    if ($(this).scrollTop() + $(this).height() == $(document).height()) {
+      collectionOfDays.counter();
+      collectionOfDays.fetch();
+    }
   });
 
+  debug("CollectionOfDays fetching");
   collectionOfDays.fetch();
-
-
 
 });
