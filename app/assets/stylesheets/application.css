@@ -50,6 +50,17 @@ table {
   top: 0px;
 }
 
+.app_title {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
+  color: #fdfdfd;
+  margin: 5px 0px 0px 0px;
+  color: #fdfdfd;
+  letter-spacing: 2px;
+  margin-left: 300px;
+  text-transform: uppercase;
+}
+
 .navbar-link{
   font-family: 'Open Sans Condensed', sans-serif;
   letter-spacing: 1px;
