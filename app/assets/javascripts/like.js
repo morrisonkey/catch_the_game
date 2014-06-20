@@ -47,19 +47,25 @@ likeCollection.prototype.destroy = function(like_id){
 
 
 likeCollection.prototype.fetch = function(likeableType) {
-		var self = this;
-		$.ajax({
-		    url: '/likes?likeable_type=' + likeableType, 
-		    dataType: 'json',
-		    method: 'get'
-	  	}).done(function(userLikes){
-		    userLikes.forEach(function(model){
-		      var like = new Like(model);
-		      self.models[like.id] = like;
-		    });
-		    $(self).trigger("like-fetch-complete");
-		});
-	}	
+  debug("likeCollection fetching: likeable_type = " + likeableType);
+	var self = this;
+	var promise = $.ajax({
+    url: '/likes?likeable_type=' + likeableType, 
+    dataType: 'json',
+    method: 'get'
+	});
+
+	promise.done(function(userLikes){
+    userLikes.forEach(function(model){
+      var like = new Like(model);
+      self.models[like.id] = like;
+    });
+    debug("likeCollection AJAX complete");
+	  $(self).trigger("like-fetch-complete");
+	});
+
+  return promise;
+}	
 
 likeCollection.prototype.hasLikeableBeenLikedByUser = function(likeable_id) {
 // $.each( obj, function( key, value ) {
@@ -73,6 +79,7 @@ likeCollection.prototype.hasLikeableBeenLikedByUser = function(likeable_id) {
 			self.currentModelInHasLikeBeenFunction = key
 		}
 	});
+	debug("hasLikeableBeenLikedByUser determined");
 	return bool;
 }
 

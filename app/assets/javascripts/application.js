@@ -12,7 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require_self
 //= require_tree .
+
+var DEBUG = true;
+
+function debug(message){
+  if (DEBUG == true) {
+    console.log(message);
+  }
+}
 
 $(function() {
      $( document ).tooltip({
