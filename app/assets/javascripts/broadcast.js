@@ -136,19 +136,22 @@ var collectionOfDays = new CollectionOfDays();
 var todaysBroadcastsView = new BroadcastCollectionView(collectionOfDays);
 // var theMostIntheFutureBroadcastsView = new CollectionOfBroadcastCollectionViews(todaysBroadcastsView);
 
-
+var likeFetchPromise;
 
 $(document).ready(function() {
 
   debug("Fetching like collection");
-  likeCollection.fetch("Broadcast"); //need to figure out how to pull the url of the page on which it is being deployed to make this more general
+  likeFetchPromise = likeCollection.fetch("Broadcast"); //need to figure out how to pull the url of the page on which it is being deployed to make this more general
 
 
   $(collectionOfDays).on("fetch-complete", function(){
     debug("CollectionOfDays fetch complete");
     $(".forever_scroll").append(todaysBroadcastsView.render().el);
 
-    todaysBroadcastsView.renderLikeListeners();
+    $.when(likeFetchPromise).done(function(){
+      debug("render like listeners promise wait is now finished");
+      todaysBroadcastsView.renderLikeListeners();
+    });
   });
 
   $(window).scroll(function() {
